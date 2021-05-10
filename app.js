@@ -1,14 +1,12 @@
 //引入Koa模块
 const Koa           =     require('koa')
-const Router        =     require('koa-router')
-const koaSwagger    =     require('koa2-swagger-ui')
 const bodyParser    =     require('koa-bodyparser')
+const koaSwagger    =     require('koa2-swagger-ui')
 
 //引入配置文件
 const router        =     require('./config/routerConfig')
 const swagger       =     require('./config/swaggerConfig')
 const {host,port}   =     require('./config/serviceConfig')
-
 
 //构造对象
 const app = new Koa();

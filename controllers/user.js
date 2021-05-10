@@ -2,7 +2,7 @@
 const Router        =     require('koa-router')
 
 //构造函数
-const router  =  new Router()    
+const router = new Router()    
 /**
  * @swagger
  * /api/user/info:
