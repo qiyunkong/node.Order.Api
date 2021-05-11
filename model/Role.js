@@ -11,16 +11,16 @@ const roleSchema = new Schema({
     name:String,                       
 
     //角色创建的初始时间   必须是函数的形式，不可以是函数()
-    create_time:{                                    
+    createTime:{                                    
         type:Date,
         default:Date.now               
     },
     
     //授权人
-    auth_name:String,                  
+    authName:String,                  
     
     //授权时间
-    auth_time:Date,
+    authTime:Date,
 
     //角色的权限
     menus:{                          

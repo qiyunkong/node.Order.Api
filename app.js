@@ -9,7 +9,7 @@ const swagger       =     require('./config/swaggerConfig')
 const {host,port}   =     require('./config/serviceConfig')
 
 //构造对象
-const app = new Koa();
+const app = new Koa()
   
 //中间件
 app.use(bodyParser())                   //解析请求

@@ -63,6 +63,7 @@
 7. 密码加密 bcrypt是一种不可逆的加密算法，无法通过解密密文得到明文。  `npm install bcrypt@4.0.1   --save`
 8. 字段验证 `npm install joi --save`
 9. moongdb 关联数据库 <a href="https://blog.csdn.net/qq_44706619/article/details/105159417">解决方法</a>
+10. node koa 日志管理 <a href="https://www.cnblogs.com/chunshan-blog/p/12632141.html">解决方法1</a>  <a href="https://www.cnblogs.com/thatme/p/10162274.html"> 解决方法2</a>  <a href="https://www.jianshu.com/p/997f9d28b52a">解决方法3</a>
 
 ​	<del>划线</del>
 

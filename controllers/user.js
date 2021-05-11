@@ -10,7 +10,7 @@ const router = new Router()
  *     summary: 获取博客列表
  *     description: 获取博客列表
  *     tags:
- *       - blogs
+ *       - 个人信息
  *     parameters:
  *       - name: author
  *         in: query
