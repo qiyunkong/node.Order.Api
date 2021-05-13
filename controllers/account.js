@@ -5,7 +5,6 @@ const Router        =     require('koa-router')
 //构造函数
 const router = new Router()
 
-
 /**
  * @swagger
  * /api/account/login:
@@ -129,9 +128,6 @@ router.put('/restPwd',async (ctx,next)=>{
   ctx.body = {name:'restPwd齐云飞'}
 
 })
-
-
-
 
 //导出模块
 module.exports = router.routes();

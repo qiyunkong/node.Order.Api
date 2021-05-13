@@ -6,17 +6,17 @@ const router = new Router()
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/tags/{id}:
  *   get:
- *     summary: 获取用户信息
- *     description: 根据ID获取指定的用户信息
+ *     summary: 获取标签信息
+ *     description: 根据ID获取指定的标签信息
  *     tags:
- *       - User 用户服务
+ *       - Tag 标签服务
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         description: 用户ID
+ *         description: 标签ID
  *         type: number
  *     responses:
  *       200:
@@ -28,90 +28,90 @@ router.get('/:id', async (ctx, next) => {
 
 /**
  * @swagger
- * /api/users/:
+ * /api/tags/:
  *   get:
- *     summary: 获取用户列表
- *     description: 获取用户列表
+ *     summary: 获取标签列表
+ *     description: 获取标签列表
  *     tags:
- *       - User 用户服务
+ *       - Tag 标签服务
  *     parameters:
  *       - name: id
  *         in: query
  *         required: true
- *         description: 用户ID
+ *         description: 标签ID
  *         type: number
  *     responses:
  *       200:
  *         description: 成功获取
  */
-router.get('/', async (ctx, next) => {    
+router.get('/', async (ctx, next) => {
     ctx.body = {name:'list标签接口API'}
 })
 
 /**
  * @swagger
- * /api/users/:
+ * /api/tags/:
  *   post:
- *     summary: 添加用户
- *     description: 添加用户
+ *     summary: 添加标签
+ *     description: 添加标签
  *     tags:
- *       - User 用户服务
+ *       - Tag 标签服务
  *     consumes:
  *      - "application/json"
  *     requestBody:
  *        required: true
  *        content:
- *           application/json: 
+ *           application/json:
  *     responses:
  *       200:
  *         description: 成功获取
  */
-router.post('/', async (ctx, next) => {    
+router.post('/', async (ctx, next) => {
     ctx.body = {name:'add标签接口API'}
 })
 
 /**
  * @swagger
- * /api/users/id:
+ * /api/tags/id:
  *   put:
- *     summary: 更新用户
- *     description: 根据id更新指定用户信息
+ *     summary: 更新标签
+ *     description: 根据id更新指定标签信息
  *     tags:
- *       - User 用户服务
+ *       - Tag 标签服务
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         description: 用户ID
+ *         description: 标签ID
  *         type: number
  *     responses:
  *       200:
  *         description: 成功获取
  */
- router.put('/:id', async (ctx, next) => {    
+router.put('/:id', async (ctx, next) => {
     ctx.body = {name:'put标签接口API'}
 })
 
 
 /**
  * @swagger
- * /api/users/{id}:
+ * /api/tags/{id}:
  *   delete:
- *     summary: 删除用户
- *     description: 根据id删除指定用户信息
+ *     summary: 删除标签
+ *     description: 根据id删除指定标签信息
  *     tags:
- *       - User 用户服务
+ *       - Tag 标签服务
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         description: 用户ID
+ *         description: 标签ID
  *         type: number
  *     responses:
  *       200:
  *         description: 成功获取
  */
-router.delete('/:id', async (ctx, next) => {    
+router.delete('/:id', async (ctx, next) => {
     ctx.body = {name:'delete标签接口API'}
 })
 

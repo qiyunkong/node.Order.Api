@@ -23,11 +23,10 @@ const validateUser = user => {
 
 
 //登录数据格式校验
-const validateLogin = user =>{
+const validateLogin = user => {
     //定义对象验证规则
     const Schema = {
-        email: Joi.string().regex(/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/).
-        required().error(new Error('邮箱或密码错误')),
+        email: Joi.string().regex(/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/).required().error(new Error('邮箱或密码错误')),
         password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).error(new Error('邮箱或密码错误'))
     };
 
@@ -37,6 +36,8 @@ const validateLogin = user =>{
         abortEarly:true
     });
 }
+
+
 
 //导出模块
 module.exports = {

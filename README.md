@@ -18,7 +18,23 @@
 >
 > 
 
+## 项目编译器
 
+WebStorm
+
+ctrl+shift+r:批量替换
+
+ctrl+shift+g+f可以批量查找
+
+ctrl + f 查找
+
+ctrl + r 替换
+
+代码对折
+
+Ctrl + Shift +  “+”  
+
+Ctrl + Shift +  “-”
 
 1.目录分化
 
@@ -73,6 +89,10 @@
 17. 知识扩充 <a href="https://blog.csdn.net/qq_40188459/article/details/113772660">学习方案</a>
 18. node.js koa2 sawgger 注释写法 POST请求调试情况,sawgger版本，koa版本不同需要区别对待 <a href="https://blog.csdn.net/weixin_44420276/article/details/106342109"> 学习方案</a>
 19. code 多行注释问题  无法对折
+20. node koa 过滤器模块
+21. koa 请求处理 [koa里如何设置统一的返回状态码？](https://segmentfault.com/q/1010000015934061) `ctx.status = 400 设置http请求状态`  <a href="https://www.jianshu.com/p/0bbe8afad24d">学习方案</a>
+22. 字段段的验证 正则字符串转化的
+23. MongoDB中的deleteOne()和findOneAndDelete()操作之间有什么区别？<a href="https://www.nhooo.com/note/qa0g2x.html">学习方案</a>
 
 ​	<del>划线</del>
 
