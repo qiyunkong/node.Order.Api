@@ -13,10 +13,10 @@ const app = new Koa()
   
 //中间件
 app.use(bodyParser())                   //解析请求
-app.use(router.routes())
-   .use(router.allowedMethods())        //启动路由
+app.use(router.routes())                //启动路由
+   .use(router.allowedMethods())        //启动子路由
 app.use(swagger.routes(),               //接口文档配置
-swagger.allowedMethods()) 
+swagger.allowedMethods())               //允许的方法
 
 app.use(koaSwagger({
   routePrefix: '/swagger',              //接口文档访问地址

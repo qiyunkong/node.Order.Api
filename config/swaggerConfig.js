@@ -2,6 +2,7 @@
 const router            =       require('koa-router')() //引入路由函数
 const swaggerJSDoc      =       require('swagger-jsdoc')
 const path              =       require('path')
+const {host,port}       =       require('./serviceConfig')
 
 //配置
 const swaggerDefinition = {
@@ -10,7 +11,7 @@ const swaggerDefinition = {
         version: '1.0.0',
         description: 'API',
     },
-    host: 'localhost:3001',
+    host: `${host}:${port}`,
     basePath: '/' // Base path (optional)
 };
 
