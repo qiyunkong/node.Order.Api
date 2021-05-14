@@ -93,6 +93,7 @@ Ctrl + Shift +  “-”
 21. koa 请求处理 [koa里如何设置统一的返回状态码？](https://segmentfault.com/q/1010000015934061) `ctx.status = 400 设置http请求状态`  <a href="https://www.jianshu.com/p/0bbe8afad24d">学习方案</a>
 22. 字段段的验证 正则字符串转化的
 23. MongoDB中的deleteOne()和findOneAndDelete()操作之间有什么区别？<a href="https://www.nhooo.com/note/qa0g2x.html">学习方案</a>
+24. 修改ip时ip类型为字符串，
 
 ​	<del>划线</del>
 
