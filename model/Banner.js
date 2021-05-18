@@ -33,7 +33,7 @@ const CarouselSchema = new Schema({
 
 })
 
-const Carousel = mongoose.model('Carousel',CarouselSchema)
+const Banner = mongoose.model('Banner',CarouselSchema)
 
 //暴露模块
-module.exports = Carousel
+module.exports = Banner
