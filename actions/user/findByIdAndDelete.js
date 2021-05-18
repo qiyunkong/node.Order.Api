@@ -1,15 +1,15 @@
 //引入模块
 const fs                =     require('fs')
 const path              =     require('path')
-const {promisity}       =     require('util')
-const { User }          =     require('../../model/User')
+const {promisify}       =     require('util')
+const User              =     require('../../model/User')
 const {validateId}      =     require('../../check/public/index')
 
-const unlink = promisity(fs.unlink);
+const unlink = promisify(fs.unlink);
 
 module.exports = async ctx => {
     //获取用户id
-    const id = req.params['id']
+    const id =ctx.params['id']
 
     if(id.indexOf('-') != -1){
         //批量删除

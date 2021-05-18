@@ -1,7 +1,7 @@
 //引入模块
 const { promisity }      =     require('util')
 const { pick }           =     require('lodash')
-const { User }           =     require('../../model/User')
+const User              =     require('../../model/User')
 const { validateId }     =     require('../../check/public/index')
 module.exports = async ctx => {
     //获取POST参数

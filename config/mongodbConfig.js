@@ -1,4 +1,7 @@
-module.exports = {
-    host:"27017",
-    name:"restaurant",
-}
+const Port = 27017
+const Host = "localhost"
+const Database = "ganfanhun"
+const Driver = `mongodb`
+const ConnectString = `${Driver}://${Host}:${Port}/${Database}`
+
+module.exports = ConnectString

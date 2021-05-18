@@ -1,7 +1,7 @@
 //导入模块
 const _                 =     require('lodash')
 const bcrypt            =     require('bcrypt')
-const { User }          =     require('../../model/User')
+const User              =     require('../../model/User')
 const {validateUser}    =     require('../../check/user')
 
 //暴露模块

@@ -3,10 +3,14 @@ const Koa           =     require('koa')
 const bodyParser    =     require('koa-bodyparser')
 const koaSwagger    =     require('koa2-swagger-ui')
 
+//引入数据库
+const mongoose      =     require('mongoose')
+
 //引入配置文件
-const router        =     require('./config/routerConfig')
-const swagger       =     require('./config/swaggerConfig')
-const {host,port}   =     require('./config/serviceConfig')
+const router          =     require('./config/routerConfig')
+const swagger         =     require('./config/swaggerConfig')
+const {host,port}     =     require('./config/serviceConfig')
+const ConnectString =     require('./config/mongodbConfig')
 
 //构造对象
 const app = new Koa()
@@ -25,6 +29,11 @@ app.use(koaSwagger({
   }
 }))
 
+
+//连接数据服务
+mongoose.connect(ConnectString,{useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true})
+        .then(() => console.log('数据库连接成功'))
+        .catch(() => console.log('数据库连接失败'));
 
 //开启服务
 app.listen(port,host,() => {

@@ -1,5 +1,5 @@
 //用户模块
-const { User }          =     require('../../model/User')
+const User              =     require('../../model/User')
 
 module.exports = async ctx => {
     // 查询用户信息

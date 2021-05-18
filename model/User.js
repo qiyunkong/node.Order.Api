@@ -26,6 +26,11 @@ const UserSchema = new Schema({
     //邮件
     phone:String,                   
 
+    //密码
+    password:{
+        type:String,
+        required:true
+    },
 
     //头像
     avatar:{                        
@@ -56,7 +61,7 @@ const UserSchema = new Schema({
 const User = mongoose.model('User',UserSchema)
 
 //初始化管理员
-User.findOne({'email': 'admin@itnode.cn'}).then(async result => {
+User.findOne({'email': 'admin@jsfei.cn'}).then(async result => {
 	if (result == null) {
 		// 生成盐
 		const salt = await bcrypt.genSalt(10)

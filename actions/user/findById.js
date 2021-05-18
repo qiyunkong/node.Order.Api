@@ -1,5 +1,5 @@
 //导入模块
-const { User }          =     require('../../model/User')
+const User              =     require('../../model/User')
 const {validateId}    =     require('../../check/public/index')
 
 //导出模块

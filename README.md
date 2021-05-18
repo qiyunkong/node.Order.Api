@@ -14,6 +14,8 @@
 
 > 语法： https://www.kancloud.cn/aibabel/koafornodejs/1812376
 >
+> 学习：https://www.itying.com/koa/article-index-id-59.html
+>
 > 阿里百秀：C:\Windows\System32\cmd.exe
 >
 > 
@@ -79,7 +81,7 @@ Ctrl + Shift +  “-”
 7. 密码加密 bcrypt是一种不可逆的加密算法，无法通过解密密文得到明文。  `npm install bcrypt@4.0.1   --save`
 8. 字段验证模块安装 `npm install joi --save`
 9. moongdb 关联数据库 <a href="https://blog.csdn.net/qq_44706619/article/details/105159417">解决方法</a>
-10. node koa 日志管理 <a href="https://www.cnblogs.com/chunshan-blog/p/12632141.html">解决方法1</a>  <a href="https://www.cnblogs.com/thatme/p/10162274.html"> 解决方法2</a>  <a href="https://www.jianshu.com/p/997f9d28b52a">解决方法3</a>
+10. node koa 日志管理 <a href="https://www.cnblogs.com/chunshan-blog/p/12632141.html">解决方法1</a>  <a href="https://www.cnblogs.com/thatme/p/10162274.html"> 解决方法2</a>  <a href="https://www.jianshu.com/p/997f9d28b52a">解决方法3</a> <a href="https://blog.csdn.net/weixin_34418883/article/details/88667817">解决方案4</a>  <a href="https://blog.csdn.net/weixin_34007906/article/details/86258160">解决方案5</a>
 11. node 微信支付沙箱环境 <a href="https://www.bilibili.com/video/BV1mE411w73k?from=search&seid=148752033936495432">解决方法1</a>  
 12. 小程序 获取当前平台版本，设备信息  <a href="">解决方案</a> `wx.getSystemInfo`
 13. 上线部署 关于pm2 相关指令  <a href="https://segmentfault.com/a/1190000018756149">学习方案</a>
@@ -94,6 +96,7 @@ Ctrl + Shift +  “-”
 22. 字段段的验证 正则字符串转化的
 23. MongoDB中的deleteOne()和findOneAndDelete()操作之间有什么区别？<a href="https://www.nhooo.com/note/qa0g2x.html">学习方案</a>
 24. 修改ip时ip类型为字符串，
+25. koa 设置 cookie 
 
 ​	<del>划线</del>
 
@@ -120,6 +123,136 @@ Ctrl + Shift +  “-”
 - 设备表
 - 商品表
 - 评论表
+
+
+
+后台代码统一格式：
+
+```json
+{
+    "code":"400",
+    "data":[],
+    "message":'提示语'
+}
+```
+
+
+
+
+# Ant Design Pro 蚂蚁设计专业版
+
+This project is initialized with [Ant Design Pro](https://pro.ant.design). Follow is the quick guide for how to use.
+
+这个项目是用[Ant Design Pro]初始化的(https://pro.ant.design). 下面是如何使用的快速指南。
+
+## Environment Prepare 环境准备
+
+Install `node_modules`:
+
+```bash
+npm install
+```
+
+or
+
+```bash
+yarn
+```
+
+## Provided Scripts 提供的脚本
+
+Ant Design Pro provides some useful script to help you quick start and build with web project, code style check and test.
+
+Scripts provided in `package.json`. It's safe to modify or add additional script:
+
+Ant Design Pro提供了一些有用的脚本，帮助您快速启动和构建web项目、代码样式检查和测试。
+
+“package.json”中提供的脚本。可以安全地修改或添加其他脚本：
+
+### Start project 启动项目
+
+```bash
+npm start
+```
+
+### Build project  打包项目
+
+```bash
+npm run build
+```
+
+### Check code style 检查代码样式
+
+```bash
+npm run lint
+```
+
+You can also use script to auto fix some lint error:
+
+也可以使用脚本自动修复某些lint错误：
+
+```bash
+npm run lint:fix
+```
+
+### Test code 测试代码
+
+```bash
+npm test
+```
+
+## More 更多
+
+You can view full document on our [official website](https://pro.ant.design). And welcome any feedback in our [github](https://github.com/ant-design/ant-design-pro).
+
+您可以在我们的[官方网站]上查看完整文档(https://pro.ant.design). 欢迎您在我们的[github]中提供任何反馈(https://github.com/ant-design/ant-design-pro).
+
+## 项目需求
+
+1. 前端路由规划,页面规划，
+
+2. 修改主题，改为配置，修改颜色  `/config/defaultSetting.ts 配置主题` 配置学习
+
+3. 根据服务端发来渲染菜单，json配置菜单数量结构
+
+4. ant design Pro 去掉国际化  `cinfig/config.ts 配置locale ` <a href="https://umijs.org/zh-CN/plugins/plugin-layout ">学习配置 </a>
+
+5. 修改登录页面，删除不需要的配置和页面
+
+6. 路由分文件，前端路由注册，路由权限访问设置，后端发送json数据结构路由渲染菜单，` 学习access`  <a href="https://www.cnblogs.com/zhubangchao/p/10245066.html">解决方案</a>
+
+7. 
+
+   
+
+## 路由编写
+
+
+
+```
+const Settings: LayoutSettings & {
+  pwa?: boolean;
+  logo?: string;
+} = {
+  navTheme: 'light',
+  // 拂晓蓝
+  primaryColor: '#13C2C2',
+  layout: 'side',
+  contentWidth: 'Fluid',
+  fixedHeader: true,
+  fixSiderbar: true,
+  colorWeak: false,
+  title: '干饭魂平台',
+  pwa: false,
+  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  iconfontUrl: '',
+  menu: {
+    locale: false
+  },
+  headerHeight: 48
+};
+```
+
 
 
 

@@ -1,7 +1,7 @@
 //引入模块
-const Router        =     require('koa-router')
-
-
+const Router                =     require('koa-router')
+const {login}               =     require('../actions/account')
+const {currentUser}         =     require('../actions/user')
 //构造函数
 const router = new Router()
 
@@ -47,9 +47,7 @@ const router = new Router()
  *              password: "string"
  *   
  */
-router.post('/login', async (ctx, next) => {
-  ctx.body = {name:'login齐云飞'}
-})
+router.post('/login', login)
 
 /**
  * @swagger
@@ -108,7 +106,7 @@ router.post('/register', async (ctx, next) => {
  *       200:
  *         description: 成功获取
  */
-router.get('/logout', async (ctx, next) => {    
+router.del('/logout', async (ctx, next) => {
     ctx.body = {name:'logout齐云飞'}
 })
 
@@ -128,6 +126,20 @@ router.put('/restPwd',async (ctx,next)=>{
   ctx.body = {name:'restPwd齐云飞'}
 
 })
+
+/**
+ * @swagger
+ * /api/account/currentUser:
+ *   get:
+ *     summary: 获取当前登录的用户
+ *     description: 获取当前登录的用户
+ *     tags:
+ *       - Account 账号服务
+ *     responses:
+ *       200:
+ *         description: 成功获取
+ */
+router.get('/currentUser',currentUser )
 
 //导出模块
 module.exports = router.routes();
