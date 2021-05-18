@@ -1,23 +1,22 @@
 //导入模块
 const User              =     require('../../model/User')
-const {validateId}    =     require('../../check/public/index')
+const {validateId}      =     require('../../check/public/index')
 
 //导出模块
-module.exports = async cxt => {
+module.exports = async ctx => {
     // 获取用户id
-    const id = cxt.params['id'];
+    const id = ctx.params['id'];
     // 数据格式校验
     const {error} = validateId(id);
     //格式不符合要求
-    if(error) return cxt.body = { message: error.message }
+    if(error) {
+        ctx.response.status = 406
+        ctx.body = { code:406, msg:"error", content: error.message }
+        return
+    }
     //格式符合要求 继续向下执行
     // 查询用户信息
     const user = await User.findById(id).select('-password');
     //响应
-    cxt.body = {
-        code: 0,
-        data: user,
-        msg: '查询成功',
-    }
-
+    ctx.body =  { code:200, msg:"success", content:'查询成功',data:user }
 };

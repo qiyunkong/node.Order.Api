@@ -2,15 +2,14 @@
 
 module.exports = async ctx => {
     if(ctx.cookies.get("userInfo")){
-        ctx.body =  ctx.cookies.get("userInfo");
+        ctx.body = {
+            code:200,
+            msg:"success",
+            content:'已登录',
+            data:ctx.cookies.get("userInfo")
+        };
         return
     }
-    ctx.body ={
-        data: {
-            isLogin: false,
-        },
-        errorCode: '401',
-        errorMessage: '请先登录！',
-        success: true,
-    }
+    ctx.response.status = 401
+    ctx.body =  {code:401,msg:"success",content:'请先登录',data: {isLogin: false}}
 }

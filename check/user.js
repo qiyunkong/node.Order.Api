@@ -25,13 +25,13 @@ const validateUser = user => {
 //登录数据格式校验
 const validateLogin = user => {
     //定义对象验证规则
-    const Schema = {
+    const schema = {
         email: Joi.string().regex(/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/).required().error(new Error('邮箱错误')),
-        // password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).error(new Error('密码错误'))
+        password: Joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).error(new Error('密码错误'))
     };
 
     //验证
-    return Joi.validate(user,Schema,{
+    return Joi.validate(user,schema,{
         //检测到错误立即返回
         abortEarly:true
     });

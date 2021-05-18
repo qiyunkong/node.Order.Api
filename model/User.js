@@ -66,7 +66,7 @@ User.findOne({'email': 'admin@jsfei.cn'}).then(async result => {
 		// 生成盐
 		const salt = await bcrypt.genSalt(10)
 		// 使用盐对密码进行加密
-		const password = await bcrypt.hash('jsfei.cn', salt)
+		const password = await bcrypt.hash('123456', salt)
         //创建用户
 	    const dataresult = await User.create({
 			nickName: 'itAdmin',

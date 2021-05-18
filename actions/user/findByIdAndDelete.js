@@ -21,7 +21,11 @@ module.exports = async ctx => {
             //验证
             let {error} =  validateId(item);
             //数据格式没有通过验证
-            if(error) return ctx.body = {message:error}
+            if(error) {
+                ctx.response.status = 406
+                ctx.body = { code:406, msg:"error", content:error}
+                return
+            }
         }
         //通过验证
         for(const item of ids){
@@ -33,13 +37,19 @@ module.exports = async ctx => {
                 await unlink(path.join(__dirname,'../','../','public',user.avatar))
             }
         }
-        ctx.body = result
+        ctx.response.status = 204
+        ctx.body = { code:204, msg:"success", content:"删除成功",data:result}
+
     }else{
         //单个删除
         //验证
         let {error} =  validateId(id)
         //数据格式没有通过验证
-        if(error) return ctx.body = {message:error.message}
+        if(error) {
+            ctx.response.status = 406
+            ctx.body = { code:406, msg:"error", content:error}
+            return
+        }
         let user = await User.findByIdAndDelete(id);
         //如果缩略图存在
         if(user.avatar){
@@ -47,7 +57,8 @@ module.exports = async ctx => {
             await unlink(path.join(__dirname,'../','../','public',user.avatar))
         }
 
-        ctx.body = {user}
+        ctx.response.status = 204
+        ctx.body = { code:204, msg:"success", content:"删除成功",data:user}
     }
 
 }

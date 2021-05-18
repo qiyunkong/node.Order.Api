@@ -5,18 +5,26 @@ const User              =     require('../../model/User')
 const {validateUser}    =     require('../../check/user')
 
 //暴露模块
-module.exports = async cxt => {
+module.exports = async ctx => {
     //获取POST参数
-    const data = cxt.request.body
+    const data = ctx.request.body
     //数据格式校验
     const { error } = validateUser(data)
     //格式不符合要求
-    if(error) return cxt.body = {message: error.message}
+    if(error){
+        ctx.response.status = 422
+        ctx.body = {code:422,msg:"error",content: error.message}
+        return
+    }
     //格式符合要求 继续向下执行
     //查询用户
     let user = await User.findOne({email:data.email})
     //用户已存在
-    if (user) return cxt.body = {message: '邮箱已经被注册'}
+    if (user) {
+        ctx.response.status = 400
+        ctx.body =  {code:400,msg:"error",content:'邮箱已经被注册'}
+        return
+    }
     //用户不存在 可以正常执行注册流程
     //生成盐
     const salt = await bcrypt.genSalt(10)
@@ -27,11 +35,8 @@ module.exports = async cxt => {
     //保存用户
     await user.save()
     //响应
-    cxt.body = {
-        code: 0,
-        data: user,
-        msg: '创建用户成功',
-    }
+    ctx.response.status = 201
+    ctx.body = {code:201,msg:"success",content:'创建用户成功',data:user}
 
 }
 
