@@ -96,7 +96,9 @@ Ctrl + Shift +  “-”
 22. 字段段的验证 正则字符串转化的
 23. MongoDB中的deleteOne()和findOneAndDelete()操作之间有什么区别？<a href="https://www.nhooo.com/note/qa0g2x.html">学习方案</a>
 24. 修改ip时ip类型为字符串，
-25. koa 设置 cookie 
+25. koa 设置 cookie  session  <a href="https://www.jianshu.com/p/8f4cc45d712e">解决方案</a>
+26. node 多条件分页服务
+27. pick 函数作用 <a href="https://www.lodashjs.com/docs/lodash.pick">解决学习</a>
 
 ​	<del>划线</del>
 
@@ -128,13 +130,33 @@ Ctrl + Shift +  “-”
 
 后台代码统一格式：
 
-```json
+```js
 {
-    "code":"400",
-    "data":[],
-    "message":'提示语'
+    code:401 || 200,   							//状态码
+    msg:"error" || "success",					//提示类型
+    content:'邮箱地址或者密码错误'				//提示内容
+    data:[] || {} || String || Number 			//返回数据			 	
 }
 ```
+
+pick - 案例
+
+```js
+var object = { 'a': 1, 'b': '2', 'c': 3 };
+_.pick(object, ['a', 'c']);
+// result => { 'a': 1, 'c': 3 }
+
+```
+
+
+
+## 数据库连接
+
+```
+mongod  --dbpath 路径 --port 27018
+```
+
+
 
 
 

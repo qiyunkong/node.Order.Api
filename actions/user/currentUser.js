@@ -2,6 +2,7 @@
 
 module.exports = async ctx => {
     if(ctx.cookies.get("userInfo")){
+        console.log(ctx.cookies.get("userInfo"))
         ctx.body = {
             code:200,
             msg:"success",
