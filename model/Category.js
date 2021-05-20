@@ -8,7 +8,10 @@ const { Schema } = mongoose
 const categorySchema = new Schema({
     
     //分类名称
-    name:String,
+    name:{
+        type:String,
+        required: true,
+    },
 
     //子分类  是否子分类    存放父节点ID
     parentId:{

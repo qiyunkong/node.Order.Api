@@ -5,6 +5,10 @@ const {currentUser}         =     require('../actions/user')
 //构造函数
 const router = new Router()
 
+
+
+
+
 /**
  * @swagger
  * /api/account/login:
@@ -25,26 +29,13 @@ const router = new Router()
  *         in: formData
  *         required: true
  *         type: string
+ *     example-value:
  *     responses:
  *       200:
  *         description: 登入成功
- *         content:
- *          application/json:
- *            schema:
- *              type: object
- *              properties:
- *                code:  
- *                  type: string
- *                  description: 返回code码
- *                msg:   
- *                  type: string  
- *                  description: 返回信息
- *                data:
- *                  type: object
- *                  description: 返回数据
- *            example:    
- *              username: "string"
- *              password: "string"
+ *         schema:
+ *          type:object
+ *          $ref:'#/definitions/Login'
  *   
  */
 router.post('/login', login)

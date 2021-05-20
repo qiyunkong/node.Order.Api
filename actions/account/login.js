@@ -1,15 +1,16 @@
 //导入模块
 const {pick}            =     require('lodash')
-const bcrypt            =     require('bcrypt')
+const {compare}         =     require('bcrypt')
 const User              =     require('../../model/User')
 const {validateLogin}   =     require('../../check/user')
+const jwt            =        require('jsonwebtoken')
+const { SECRET }      =       require('../../config/constantsConfig')
 
 module.exports = async (ctx) => {
-
     //获取POST参数
     const data = ctx.request.body
     // 数据格式校验
-    const { error } = validateLogin(pick(data, [ 'email', 'password']))
+    const { error } = validateLogin(data)
     // 格式不符合要求
    if (error) {
        ctx.response.status = 406
@@ -25,7 +26,7 @@ module.exports = async (ctx) => {
         return
     }
     // 如果用户存在 验证密码 返回布尔值
-    const validPassword = await bcrypt.compare(data.password, user.password)
+    const validPassword = await compare(data.password, user.password)
     // 密码错误 响应
     if (!validPassword){
         ctx.response.status = 400
@@ -33,17 +34,19 @@ module.exports = async (ctx) => {
         return
     }
 
-    // 将用户信息存储在session cookie中
-    ctx.cookies.set('userInfo',JSON.stringify(user),{
-       maxAge:60*1000,
-    })
+    //设置加密 token
+    let token = null
+    //console.log(user);
+    //let json = data.toJSON()
+    token = jwt.sign(user.toJSON(), SECRET, { expiresIn:60*60 })
+
 
     // 响应
     ctx.body =  {
         code:200,
         msg:"success",
         content:'登录成功',
-        data:pick(user, ['nickName', 'email', 'role', 'avatar', '_id', 'status', 'createTime'])
+        data:token
     }
 
 };
