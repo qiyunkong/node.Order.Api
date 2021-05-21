@@ -4,7 +4,7 @@ const {validateId}      =     require('../../check/public/index')
 
 //导出模块
 module.exports = async ctx => {
-    // 获取用户id
+    // 获取用户id params动态参数 URL
     const id = ctx.params['id'];
     // 数据格式校验
     const {error} = validateId(id);

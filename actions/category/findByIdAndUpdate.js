@@ -1,6 +1,6 @@
 //引入模块
 const { pick }           =     require('lodash')
-const Category              =     require('../../model/Category')
+const Category           =     require('../../model/Category')
 const { validateId }     =     require('../../check/public/index')
 module.exports = async ctx => {
     //获取POST参数

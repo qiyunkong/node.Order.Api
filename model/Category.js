@@ -19,8 +19,15 @@ const categorySchema = new Schema({
         default:'0'
     },
 
-    //是否展示
+    //小程序是否展示 0不展示 1展示
     status:{                        
+        type:Number,
+        required:true,
+        default:1
+    },
+
+    //删除状态 0删除状态 1正常状态
+    deleted:{
         type:Number,
         required:true,
         default:1

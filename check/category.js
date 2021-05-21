@@ -1,6 +1,7 @@
 //引入模块
 const Joi = require("joi")
 
+const {validateId}      =     require('./public/index')
 
 //注册数据格式校验
 const validateCategory = category => {
@@ -19,7 +20,21 @@ const validateCategory = category => {
 }
 
 
+const validateListId = (list) => {
+    for(const item of list){
+        //验证
+        let {error} = validateId(item)
+        if(error){
+            return error
+        }
+
+    }
+    return false
+}
+
+
 //导出模块
 module.exports = {
+    validateListId,
     validateCategory,
 }

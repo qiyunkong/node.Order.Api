@@ -17,19 +17,19 @@ const ConnectString   =     require('./config/mongodbConfig')
 const { SECRET }      =     require('./config/constantsConfig')
 
 //构造对象
-const app = new Koa()
+const App = new Koa()
   
 //中间件
-app.use(bodyParser({
-enableTypes:['json', 'form', 'text']
+App.use(bodyParser({
+  enableTypes:['json', 'form', 'text']
 }))                                     //解析请求
-app.use(staticKoa('./public'))     //设置静态文件路由
-app.use(router.routes())                //启动路由
+App.use(staticKoa('./public'))     //设置静态文件路由
+App.use(router.routes())                //启动路由
    .use(router.allowedMethods())        //启动子路由
-app.use(swagger.routes())               //swagger路由
+App.use(swagger.routes())               //swagger路由
    .use(swagger.allowedMethods())       //允许的方法
 
-app.use(koaSwagger({
+App.use(koaSwagger({
   routePrefix: '/swagger',              //接口文档访问地址
   swaggerOptions: {
     url: '/swagger.json',               //example path to json 其实就是之后swagger-jsdoc生成的文档地址
@@ -37,7 +37,7 @@ app.use(koaSwagger({
 }))
 
 // koa实现jwt验证
-app.use(jwtKoa({
+App.use(jwtKoa({
   // 密匙
   secret: SECRET
 }).unless({
@@ -55,7 +55,7 @@ mongoose.connect(ConnectString,{useCreateIndex: true, useNewUrlParser: true, use
         .catch(() => console.log('数据库连接失败'));
 
 //开启服务
-app.listen(port,host,() => {
+App.listen(port,host,() => {
   console.log(`Server is running to ${host}:${port}`);
 })
 

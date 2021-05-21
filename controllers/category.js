@@ -129,7 +129,23 @@ router.put('/:id', async (ctx, next) => {
  */
 router.delete('/', async (ctx, next) => {
     console.log(ctx.request.query);
+    const {id} = ctx.request.query
+    const idType = typeof id
+    switch (idType) {
+        case "string":
 
+            break
+        case "object":
+            //验证
+            validateListId(id)
+            //执行删除
+
+            //返回
+            console.log("string")
+            break
+        default:
+            break
+    }
 
     ctx.body = {name:'delete分类接口API'}
 })

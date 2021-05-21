@@ -98,7 +98,12 @@ Ctrl + Shift +  “-”
 24. 修改ip时ip类型为字符串，
 25. koa 设置 cookie  session  <a href="https://www.jianshu.com/p/8f4cc45d712e">解决方案</a>
 26. node 多条件分页服务
-27. pick 函数作用 <a href="https://www.lodashjs.com/docs/lodash.pick">解决学习</a>
+27. pick 函数作用 <a href="https://www.lodashjs.com/docs/lodash.pick">学习方案</a>
+28. node 模块警告问题
+29. 正则表达式的学习 <a href="http://c.runoob.com/front-end/854">学习方案</a>
+30. node + swagger 定义模型注释  [学习方案](https://blog.csdn.net/weixin_44420276/article/details/106342109) [学习方案2](https://www.jianshu.com/p/fb6ac11e7745) [学习方案3](https://blog.csdn.net/qq_38734862/article/details/107715579)
+31. 单点登录 jwt  [学习方案](https://blog.csdn.net/Brannua/article/details/105450205)  什么jwt[学习方案](https://www.jianshu.com/p/576dbf44b2ae)
+32. GET 多条件模糊参数 GET 路由参数 [学习方案](https://blog.csdn.net/qq_38694034/article/details/105247667)
 
 ​	<del>划线</del>
 
@@ -148,6 +153,18 @@ _.pick(object, ['a', 'c']);
 
 ```
 
+token 采坑存储必须是JSON  [参考案例](https://blog.csdn.net/weixin_30740581/article/details/99433113)
+
+```js
+//设置加密 token
+let token = null
+console.log(user);
+//let json = data.toJSON()
+token = jwt.sign(user.toJSON(), SECRET, { expiresIn:60 })
+```
+
+mongoose多条件模糊查询 [参考案例](https://www.cnblogs.com/coolslider/p/7832083.html)
+
 
 
 ## 数据库连接
@@ -156,7 +173,20 @@ _.pick(object, ['a', 'c']);
 mongod  --dbpath 路径 --port 27018
 ```
 
+ 
 
+
+
+项目启动警告问题
+
+```js
+(node:724) Warning: Accessing non-existent property 'count' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:724) Warning: Accessing non-existent property 'findOne' of module exports inside circular dependency
+(node:724) Warning: Accessing non-existent property 'remove' of module exports inside circular dependency
+(node:724) Warning: Accessing non-existent property 'updateOne' of module exports inside circular dependency
+
+```
 
 
 
@@ -277,4 +307,4 @@ const Settings: LayoutSettings & {
 
 
 
-
+1.
