@@ -2,8 +2,9 @@
 const Router        =     require('koa-router')
 
 const {
-        postCategory,
-        getList
+        postAction,
+        getAction,
+        deleteAction
     }               = require('../actions/category')
 
 //构造函数
@@ -61,7 +62,7 @@ router.get('/:id', async (ctx, next) => {
  *       200:
  *         description: 成功获取
  */
-router.get('/', getList)
+router.get('/', getAction)
 
 /**
  * @swagger
@@ -85,7 +86,7 @@ router.get('/', getList)
  *           type: object
  *           $ref: '#/definitions/Login'
  */
-router.post('/', postCategory)
+router.post('/', postAction)
 
 /**
  * @swagger
@@ -105,7 +106,8 @@ router.post('/', postCategory)
  *       200:
  *         description: 成功获取
  */
-router.put('/:id', async (ctx, next) => {
+router.put('/', async (ctx, next) => {
+    console.log(ctx.request.body)
     ctx.body = {name:'put分类接口API'}
 })
 
@@ -127,28 +129,7 @@ router.put('/:id', async (ctx, next) => {
  *       200:
  *         description: 成功获取
  */
-router.delete('/', async (ctx, next) => {
-    console.log(ctx.request.query);
-    const {id} = ctx.request.query
-    const idType = typeof id
-    switch (idType) {
-        case "string":
-
-            break
-        case "object":
-            //验证
-            validateListId(id)
-            //执行删除
-
-            //返回
-            console.log("string")
-            break
-        default:
-            break
-    }
-
-    ctx.body = {name:'delete分类接口API'}
-})
+router.delete('/', deleteAction)
 
 
 //导出模块

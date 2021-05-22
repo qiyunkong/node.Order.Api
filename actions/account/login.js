@@ -38,7 +38,7 @@ module.exports = async (ctx) => {
     let token = null
     //console.log(user);
     //let json = data.toJSON()
-    token = jwt.sign(user.toJSON(), SECRET, { expiresIn:60*60 })
+    token = jwt.sign({id:user._id}, SECRET, { expiresIn:60*60 })
 
 
     // 响应

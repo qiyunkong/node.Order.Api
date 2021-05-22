@@ -1,7 +1,7 @@
 //引入模块
 const Category              =       require('../../model/Category')
 const {validateId}          =           require('../../check/public/index')
-const {deleteId}            =          require('../../servers/base');
+const {deleteId,deleteList} =          require('../../servers/base');
 const {validateListId}      =       require('../../check/category')
 
 
@@ -10,12 +10,13 @@ module.exports = async ctx => {
     const {id} = ctx.request.query
     //效验类型
     const idType = typeof id
+    console.log(idType)
     //httpData
     let httpData;
     switch (idType) {
         case "string":
-            //效验ID
-            const { error } = validateId(id)
+            //进行效验
+            const {error} = validateId(id)
             //数据格式没有通过验证
             if(error) {
                 httpData = { code:406, msg:"error", content:error}
@@ -25,15 +26,15 @@ module.exports = async ctx => {
             httpData = await deleteId(id,Category)
             break
         case "object":
-            //验证
+            //进行效验
             const errorList =  validateListId(id)
-            //执行删除
+            //数据格式没有通过验证
             if(errorList) {
                 httpData = { code:406, msg:"error", content:errorList}
                 break
             }
             //返回
-            httpData = await  deleteList(id,Category)
+            httpData = await deleteList(id,Category)
             break
         default:
             httpData = { code:406, msg:"error", content:'请求参数存在问题'}

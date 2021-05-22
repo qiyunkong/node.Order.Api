@@ -1,4 +1,5 @@
 module.exports = {
-    postCategory:require('./create'),
-    getList:require('./find')
+    getAction:require('./find'),
+    postAction:require('./create'),
+    deleteAction:require('./findByIdAndDelete')
 }

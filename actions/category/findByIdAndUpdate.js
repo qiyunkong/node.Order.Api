@@ -6,8 +6,8 @@ module.exports = async ctx => {
     //获取POST参数
     const data = ctx.request.body
     //将密码、邮箱字段抛出
-    data.fileds = pick(data,['nickName','role','avatar','status'])
-    data._id = ctx.params['id']
+    // data.fileds = pick(data,['nickName','role','avatar','status'])
+    //data._id = ctx.params['id']
     //验证
     const {error} = validateId(data._id)
     //数据格式没有通过验证
