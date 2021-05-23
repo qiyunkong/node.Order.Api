@@ -1,6 +1,7 @@
 const fs                =     require('fs')
 const path              =     require('path')
 const {promisify}       =     require('util')
+const setKeyAndValue    =     require('./tool')
 const unlink            =     promisify(fs.unlink);
 const HttpData          =     require('../config/httpConfig')
 
@@ -49,17 +50,17 @@ const queryId = async  (id,Model) =>{
 
 
 
-//异步 查找  搜索search  串行接口的好处 大大减少服务器的发送数据的压力,请求的次数可能是增多也可能是减少
+//异步 查找  搜索search  串行接口的好处 大大减少服务器的发送数据的压力,请求的次数可能是增多也可能是减少  模糊查询
 const queryList = async (options,Model) => {
     // 查询用户信息
     //const {current,pageSize} = options
     const current  =  delete options.current
     const pageSize =  delete options.pageSize
-    const result = await Model.find(
-        {
-            ...options
-        }
-        ).sort('-createTime')
+    options = setKeyAndValue(options)
+    const result = await Model.find(options).sort('-createTime')
+
+    //数组
+
     return  {code:200,msg:"success",content:'获取用户列表成功',data:result}
     /*
     * 分页
