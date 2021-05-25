@@ -104,6 +104,9 @@ Ctrl + Shift +  “-”
 30. node + swagger 定义模型注释  [学习方案](https://blog.csdn.net/weixin_44420276/article/details/106342109) [学习方案2](https://www.jianshu.com/p/fb6ac11e7745) [学习方案3](https://blog.csdn.net/qq_38734862/article/details/107715579)
 31. 单点登录 jwt  [学习方案](https://blog.csdn.net/Brannua/article/details/105450205)  什么jwt[学习方案](https://www.jianshu.com/p/576dbf44b2ae)
 32. GET 多条件模糊参数 GET 路由参数 [学习方案](https://blog.csdn.net/qq_38694034/article/details/105247667)
+33. 假删除状态需要在后端统一设置，前端参数不需要参数，只发前端正常状态的数据
+34. mongoose时间范围搜索 不然搜索会有报错现象500  [学生案例](https://blog.csdn.net/m0_37857819/article/details/106559709)
+35. mongoose 链式查询
 
 ​	<del>划线</del>
 

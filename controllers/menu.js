@@ -82,6 +82,20 @@ const adminMenu = [
         ],
     },
     {
+        name: '模型管理',
+        icon: 'SettingFilled',
+        children: [
+            {
+                path: '/model/list',
+                name: '模型列表',
+            },
+            {
+                path: '/model/add',
+                name: '模型添加',
+            },
+        ],
+    },
+    {
         name: '数据统计',
         icon: 'dashboard',
         children: [

@@ -4,7 +4,8 @@ const Router        =     require('koa-router')
 const {
         postAction,
         getAction,
-        deleteAction
+        deleteAction,
+        putAction
     }               = require('../actions/category')
 
 //构造函数
@@ -106,10 +107,8 @@ router.post('/', postAction)
  *       200:
  *         description: 成功获取
  */
-router.put('/', async (ctx, next) => {
-    console.log(ctx.request.body)
-    ctx.body = {name:'put分类接口API'}
-})
+router.put('/', putAction)
+
 
 /**
  * @swagger

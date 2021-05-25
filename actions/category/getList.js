@@ -1,6 +1,6 @@
 //用户模块
 const Category       =     require('../../model/Category')
-const {queryList}    =   require('../.././servers/base')
+const {queryList}    =    require('../.././servers/category')
 module.exports = async ctx => {
     //获取参数
     const options = ctx.request.query

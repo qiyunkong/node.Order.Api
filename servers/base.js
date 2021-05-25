@@ -1,7 +1,7 @@
 const fs                =     require('fs')
 const path              =     require('path')
 const {promisify}       =     require('util')
-const setKeyAndValue    =     require('./tool')
+const {matchOR}         =     require('./tool')
 const unlink            =     promisify(fs.unlink);
 const HttpData          =     require('../config/httpConfig')
 
@@ -30,7 +30,7 @@ const addModel = async (data,Model) =>{
 
 //更新 操作
 const updateId = async (data,Model) =>{
-    let result = await Model.findByIdAndUpdate(data._id,{$set:data}, {new: true, fields: '-password'})
+    let result = await Model.findByIdAndUpdate(data._id,{$set:data})
     return  {code:201,msg:"success",data:result}
 }
 
@@ -56,7 +56,7 @@ const queryList = async (options,Model) => {
     //const {current,pageSize} = options
     const current  =  delete options.current
     const pageSize =  delete options.pageSize
-    options = setKeyAndValue(options)
+    options = matchOR(options)
     const result = await Model.find(options).sort('-createTime')
 
     //数组

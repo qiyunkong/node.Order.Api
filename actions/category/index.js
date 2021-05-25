@@ -1,5 +1,6 @@
 module.exports = {
-    getAction:require('./find'),
-    postAction:require('./create'),
-    deleteAction:require('./findByIdAndDelete')
+    getAction:require('./getList'),
+    postAction:require('./postBody'),
+    putAction:require('./putId'),
+    deleteAction:require('./deleteList')
 }
