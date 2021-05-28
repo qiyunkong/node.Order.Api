@@ -92,7 +92,7 @@ Ctrl + Shift +  “-”
 18. node.js koa2 sawgger 注释写法 POST请求调试情况,sawgger版本，koa版本不同需要区别对待 <a href="https://blog.csdn.net/weixin_44420276/article/details/106342109"> 学习方案</a>
 19. code 多行注释问题  无法对折
 20. node koa 过滤器模块
-21. koa 请求处理 [koa里如何设置统一的返回状态码？](https://segmentfault.com/q/1010000015934061) `ctx.status = 400 设置http请求状态`  <a href="https://www.jianshu.com/p/0bbe8afad24d">学习方案</a>
+21. koa 请求处理 [koa里如何设置统一的返回状态码？](https://segmentfault.com/q/1010000015934061) `cxt.status = 400 设置http请求状态`  <a href="https://www.jianshu.com/p/0bbe8afad24d">学习方案</a>
 22. 字段段的验证 正则字符串转化的
 23. MongoDB中的deleteOne()和findOneAndDelete()操作之间有什么区别？<a href="https://www.nhooo.com/note/qa0g2x.html">学习方案</a>
 24. 修改ip时ip类型为字符串，
@@ -106,7 +106,8 @@ Ctrl + Shift +  “-”
 32. GET 多条件模糊参数 GET 路由参数 [学习方案](https://blog.csdn.net/qq_38694034/article/details/105247667)
 33. 假删除状态需要在后端统一设置，前端参数不需要参数，只发前端正常状态的数据
 34. mongoose时间范围搜索 不然搜索会有报错现象500  [学生案例](https://blog.csdn.net/m0_37857819/article/details/106559709)
-35. mongoose 链式查询
+35. mongoose 链式查询 条件嵌套 [学习案例](https://blog.csdn.net/Momo_Joanne/article/details/105042498) **[语法参考](https://segmentfault.com/a/1190000021010300?utm_source=tag-newest)** [参考案例](https://blog.csdn.net/weixin_34010949/article/details/88750591)
+36. 分类ID查询有BUG
 
 ​	<del>划线</del>
 
@@ -166,7 +167,7 @@ console.log(user);
 token = jwt.sign(user.toJSON(), SECRET, { expiresIn:60 })
 ```
 
-mongoose多条件模糊查询 [参考案例](https://www.cnblogs.com/coolslider/p/7832083.html)
+mongoose多条件模糊查询 [参考案例](https://www.cnblogs.com/coolslider/p/7832083.html)  [参考案例](https://ld246.com/article/1576166614334)
 
 
 

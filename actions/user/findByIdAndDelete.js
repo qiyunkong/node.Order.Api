@@ -7,9 +7,9 @@ const {validateId}      =     require('../../check/public/index')
 
 const unlink = promisify(fs.unlink);
 
-module.exports = async ctx => {
+module.exports = async cxt => {
     //获取用户id
-    const id =ctx.params['id']
+    const id =cxt.params['id']
 
     if(id.indexOf('-') != -1){
         //批量删除
@@ -22,8 +22,8 @@ module.exports = async ctx => {
             let {error} =  validateId(item);
             //数据格式没有通过验证
             if(error) {
-                ctx.response.status = 406
-                ctx.body = { code:406, msg:"error", content:error}
+                cxt.response.status = 406
+                cxt.body = { code:406, msg:"error", content:error}
                 return
             }
         }
@@ -37,8 +37,8 @@ module.exports = async ctx => {
                 await unlink(path.join(__dirname,'../','../','public',user.avatar))
             }
         }
-        ctx.response.status = 204
-        ctx.body = { code:204, msg:"success", content:"删除成功",data:result}
+        cxt.response.status = 204
+        cxt.body = { code:204, msg:"success", content:"删除成功",data:result}
 
     }else{
         //单个删除
@@ -46,8 +46,8 @@ module.exports = async ctx => {
         let {error} =  validateId(id)
         //数据格式没有通过验证
         if(error) {
-            ctx.response.status = 406
-            ctx.body = { code:406, msg:"error", content:error}
+            cxt.response.status = 406
+            cxt.body = { code:406, msg:"error", content:error}
             return
         }
         let user = await User.findByIdAndDelete(id);
@@ -57,8 +57,8 @@ module.exports = async ctx => {
             await unlink(path.join(__dirname,'../','../','public',user.avatar))
         }
 
-        ctx.response.status = 204
-        ctx.body = { code:204, msg:"success", content:"删除成功",data:user}
+        cxt.response.status = 204
+        cxt.body = { code:204, msg:"success", content:"删除成功",data:user}
     }
 
 }

@@ -47,8 +47,8 @@ const router = new Router()
  *       200:
  *         description: 成功获取
  */
-router.get('/:id', async (ctx, next) => {
-    ctx.body = {name:'info分类接口API'}
+router.get('/:id', async (cxt, next) => {
+    cxt.body = {name:'info分类接口API'}
 })
 
 /**

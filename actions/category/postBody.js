@@ -3,10 +3,10 @@ const Category              =     require('../../model/Category')
 const {validateCategory}    =     require('../../check/category')
 const {addModel}            =     require('../../servers/base')
 //暴露模块  
-module.exports = async ctx => {
+module.exports = async cxt => {
     let httpData
     //获取POST参数
-    const data = ctx.request.body
+    const data = cxt.request.body
     //数据格式校验
     const { error } = validateCategory(data)
     //格式不符合要求
@@ -15,9 +15,9 @@ module.exports = async ctx => {
     }else{
         httpData = await addModel(data,Category);
     }
-    ctx.response.status = httpData.code
+    cxt.response.status = httpData.code
     //响应
-    ctx.body = httpData
+    cxt.body = httpData
 
 }
 

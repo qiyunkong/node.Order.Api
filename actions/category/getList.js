@@ -1,10 +1,10 @@
 //用户模块
 const Category       =     require('../../model/Category')
 const {queryList}    =    require('../.././servers/category')
-module.exports = async ctx => {
+module.exports = async cxt => {
     //获取参数
-    const options = ctx.request.query
+    const options = cxt.request.query
     console.log(options)
     const body = await queryList(options,Category)
-    ctx.body = body
+    cxt.body = body
 }

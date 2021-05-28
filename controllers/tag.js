@@ -22,8 +22,8 @@ const router = new Router()
  *       200:
  *         description: 成功获取
  */
-router.get('/:id', async (ctx, next) => {
-    ctx.body = {name:'info标签接口API'}
+router.get('/:id', async (cxt, next) => {
+    cxt.body = {name:'info标签接口API'}
 })
 
 /**
@@ -44,8 +44,8 @@ router.get('/:id', async (ctx, next) => {
  *       200:
  *         description: 成功获取
  */
-router.get('/', async (ctx, next) => {
-    ctx.body = {name:'list标签接口API'}
+router.get('/', async (cxt, next) => {
+    cxt.body = {name:'list标签接口API'}
 })
 
 /**
@@ -66,8 +66,8 @@ router.get('/', async (ctx, next) => {
  *       200:
  *         description: 成功获取
  */
-router.post('/', async (ctx, next) => {
-    ctx.body = {name:'add标签接口API'}
+router.post('/', async (cxt, next) => {
+    cxt.body = {name:'add标签接口API'}
 })
 
 /**
@@ -88,8 +88,8 @@ router.post('/', async (ctx, next) => {
  *       200:
  *         description: 成功获取
  */
-router.put('/:id', async (ctx, next) => {
-    ctx.body = {name:'put标签接口API'}
+router.put('/:id', async (cxt, next) => {
+    cxt.body = {name:'put标签接口API'}
 })
 
 
@@ -111,8 +111,8 @@ router.put('/:id', async (ctx, next) => {
  *       200:
  *         description: 成功获取
  */
-router.delete('/:id', async (ctx, next) => {
-    ctx.body = {name:'delete标签接口API'}
+router.delete('/:id', async (cxt, next) => {
+    cxt.body = {name:'delete标签接口API'}
 })
 
 

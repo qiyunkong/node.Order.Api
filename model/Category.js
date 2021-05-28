@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 //配置用户表的数据格式
-const categorySchema = new Schema({
+const CategorySchema = new Schema({
     
     //分类名称
     name:{
@@ -48,5 +48,5 @@ const categorySchema = new Schema({
 })
 
 //建立用户集合类
-const Category = mongoose.model('Category',categorySchema);
+const Category = mongoose.model('Category',CategorySchema);
 module.exports = Category;

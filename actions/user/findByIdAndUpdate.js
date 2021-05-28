@@ -2,18 +2,18 @@
 const { pick }           =     require('lodash')
 const User              =     require('../../model/User')
 const { validateId }     =     require('../../check/public/index')
-module.exports = async ctx => {
+module.exports = async cxt => {
     //获取POST参数
-    const data = ctx.request.body
+    const data = cxt.request.body
     //将密码、邮箱字段抛出
     data.fileds = pick(data,['nickName','role','avatar','status'])
-    data._id = ctx.params['id']
+    data._id = cxt.params['id']
     //验证
     const {error} = validateId(data._id)
     //数据格式没有通过验证
     if(error){
-        ctx.response.status = 400
-        ctx.body = {code:400,msg:"error",content: error.message}
+        cxt.response.status = 400
+        cxt.body = {code:400,msg:"error",content: error.message}
         return
     }
     //通过验证
@@ -22,6 +22,6 @@ module.exports = async ctx => {
     //fields:'-password' 从返回值中抛除密码字段
     let user = await User.findByIdAndUpdate(data._id,{$set:data}, {new: true, fields: '-password'})
     //响应
-    ctx.response.status = 201
-    ctx.body = {code:201,msg:"success",data:user}
+    cxt.response.status = 201
+    cxt.body = {code:201,msg:"success",data:user}
 }

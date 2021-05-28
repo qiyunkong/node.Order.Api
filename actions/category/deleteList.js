@@ -5,12 +5,12 @@ const {deleteId,deleteList} =          require('../../servers/base');
 const {validateListId}      =       require('../../check/category')
 
 
-module.exports = async ctx => {
+module.exports = async cxt => {
     //获取参数
-    const {id} = ctx.request.query
+    const {id} = cxt.request.query
     //效验类型
     const idType = typeof id
-    console.log(idType)
+    //console.log(idType)
     //httpData
     let httpData;
     switch (idType) {
@@ -42,6 +42,6 @@ module.exports = async ctx => {
     }
 
     //返回前端数据
-    ctx.response.status = httpData.code
-    ctx.body = httpData
+    cxt.response.status = httpData.code
+    cxt.body = httpData
 }

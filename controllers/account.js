@@ -81,8 +81,8 @@ router.post('/login', login)
  *         description: 注册成功
  *   
  */
-router.post('/register', async (ctx, next) => {
-    ctx.body = {name:'register齐云飞'}
+router.post('/register', async (cxt, next) => {
+    cxt.body = {name:'register齐云飞'}
 })
 
 /**
@@ -97,8 +97,8 @@ router.post('/register', async (ctx, next) => {
  *       200:
  *         description: 成功获取
  */
-router.del('/logout', async (ctx, next) => {
-    ctx.body = {name:'logout齐云飞'}
+router.del('/logout', async (cxt, next) => {
+    cxt.body = {name:'logout齐云飞'}
 })
 
 /**
@@ -113,8 +113,8 @@ router.del('/logout', async (ctx, next) => {
  *       200:
  *         description: 成功获取
  */
-router.put('/restPwd',async (ctx,next)=>{
-  ctx.body = {name:'restPwd齐云飞'}
+router.put('/restPwd',async (cxt,next)=>{
+  cxt.body = {name:'restPwd齐云飞'}
 
 })
 

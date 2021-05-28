@@ -4,7 +4,7 @@ const  matchOR = (options)=> {
     let optionArr = []
     for(let key in options){
         let item = {}
-        item[key] = {$regex:options[key],$options:'$i'}
+        item[key] = {$regex:options[key]}
         optionArr.push(item)
     }
     if(optionArr.length != 0){

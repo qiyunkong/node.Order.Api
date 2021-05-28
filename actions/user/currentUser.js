@@ -6,19 +6,19 @@ const User      =   require('../../model/User')
 const {queryId}  =    require('../../servers/base')
 
 
-module.exports = async ctx => {
-    const token = ctx.header.authorization
+module.exports = async cxt => {
+    const token = cxt.header.authorization
     console.log(token)
     try{
         // 解密token
         const {id} = await verify(token.split(' ')[1], SECRET)
         console.log(id,"解析tokenID");
         const body = await queryId(id,User)
-        ctx.body = body
+        cxt.body = body
     }catch(e){
         console.error(e)
-        ctx.response.status = 401
-        ctx.body = {
+        cxt.response.status = 401
+        cxt.body = {
             code:401,
             msg:"error",
             content:'Verify token failed.',

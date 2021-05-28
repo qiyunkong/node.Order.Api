@@ -5,15 +5,15 @@ const User              =     require('../../model/User')
 const {validateUser}    =     require('../../check/user')
 
 //暴露模块
-module.exports = async ctx => {
+module.exports = async cxt => {
     //获取POST参数
-    const data = ctx.request.body
+    const data = cxt.request.body
     //数据格式校验
     const { error } = validateUser(data)
     //格式不符合要求
     if(error){
-        ctx.response.status = 422
-        ctx.body = {code:422,msg:"error",content: error.message}
+        cxt.response.status = 422
+        cxt.body = {code:422,msg:"error",content: error.message}
         return
     }
     //格式符合要求 继续向下执行
@@ -21,8 +21,8 @@ module.exports = async ctx => {
     let user = await User.findOne({email:data.email})
     //用户已存在
     if (user) {
-        ctx.response.status = 400
-        ctx.body =  {code:400,msg:"error",content:'邮箱已经被注册'}
+        cxt.response.status = 400
+        cxt.body =  {code:400,msg:"error",content:'邮箱已经被注册'}
         return
     }
     //用户不存在 可以正常执行注册流程
@@ -35,8 +35,8 @@ module.exports = async ctx => {
     //保存用户
     await user.save()
     //响应
-    ctx.response.status = 201
-    ctx.body = {code:201,msg:"success",content:'创建用户成功',data:user}
+    cxt.response.status = 201
+    cxt.body = {code:201,msg:"success",content:'创建用户成功',data:user}
 
 }
 

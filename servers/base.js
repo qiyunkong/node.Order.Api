@@ -37,7 +37,7 @@ const updateId = async (data,Model) =>{
 //查询
 const queryId = async  (id,Model) =>{
     let result = await Model.findOne({_id:id})
-    console.log(result,"封装的queryId方法");
+    // console.log(result,"封装的queryId方法");
     // 如果用户不存在 响应
     if (!result) {
         return new HttpData(401,"error","token格式不正确")
