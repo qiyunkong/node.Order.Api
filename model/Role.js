@@ -26,12 +26,15 @@ const roleSchema = new Schema({
     menus:{                          
         type:Array,
         default:[]
-    }
+    },
+
+    //描述
+    desc:String
 
 })
 
 // 系统配置集合类
-const Role = mongoose.model('role', roleSchema)
+const Role = mongoose.model('Role', roleSchema)
 
 // 导出对象
 module.exports = Role

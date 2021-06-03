@@ -1,58 +1,42 @@
 //引入模块
 const Router = require('koa-router')
 
-const { postAction, getAction, deleteAction, putAction } = require('../actions/category')
+const { postAction, getAction, deleteAction, putAction,IdAction } = require('../actions/order')
 
 //构造函数
 const router = new Router()
 
-// 定义模型 可以公用 schema $ref
-/**
- * @swagger
- * definitions:
- *   Login:
- *     required:
- *       - username
- *       - password
- *     properties:
- *       username:
- *         type: string
- *       password:
- *         type: string
- *       path:
- *         type: string
- */
+
+
 
 /**
  * @swagger
- * /api/category/{id}:
+ * /api/order{id}:
  *   get:
- *     summary: 获取分类信息
- *     description: 根据ID获取指定的分类信息
+ *     summary: 获取订单信息
+ *     description: 根据ID获取指定的订单信息
  *     tags:
- *       - Category 分类服务
+ *       - Order 订单服务
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         description: 分类ID
+ *         description: 订单ID
  *         type: number
  *     responses:
  *       200:
  *         description: 成功获取
  */
-router.get('/:id', async (cxt, next) => {
-    cxt.body = {name:'info分类接口API'}
-})
+router.get('/:id', IdAction);
 
 /**
  * @swagger
- * /api/category/:
+ * /api/order:
  *   get:
- *     summary: 获取分类列表
- *     description: 获取分类列表
+ *     summary: 获取订单列表
+ *     description: 获取订单列表
  *     tags:
- *       - Category 分类服务
+ *       - Order 订单服务
  *     responses:
  *       200:
  *         description: 成功获取
@@ -61,12 +45,12 @@ router.get('/', getAction)
 
 /**
  * @swagger
- * /api/category/:
+ * /api/order:
  *   post:
- *     summary: 添加分类
- *     description: 添加分类
+ *     summary: 添加订单
+ *     description: 添加订单
  *     tags:
- *       - Category 分类服务
+ *       - Order 订单服务
  *     consumes:
  *      - "application/json"
  *     requestBody:
@@ -85,17 +69,17 @@ router.post('/', postAction)
 
 /**
  * @swagger
- * /api/category/id:
+ * /api/orderid:
  *   put:
- *     summary: 更新分类
- *     description: 根据id更新指定分类信息
+ *     summary: 更新订单
+ *     description: 根据id更新指定订单信息
  *     tags:
- *       - Category 分类服务
+ *       - Order 订单服务
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         description: 分类ID
+ *         description: 订单ID
  *         type: number
  *     responses:
  *       200:
@@ -105,17 +89,17 @@ router.put('/', putAction)
 
 /**
  * @swagger
- * /api/category/{id}:
+ * /api/order/{id}:
  *   delete:
- *     summary: 删除分类
- *     description: 根据id删除指定分类信息
+ *     summary: 删除订单
+ *     description: 根据id删除指定订单信息
  *     tags:
- *       - Category 分类服务
+ *       - Order 订单服务
  *     parameters:
  *       - name: id
  *         in: path
  *         required: true
- *         description: 分类ID
+ *         description: 订单ID
  *         type: number
  *     responses:
  *       200:

@@ -1,6 +1,6 @@
 //导入模块
-const Category              =     require('../../model/Category')
-const {validateId}          =     require('../../check/public/index')
+const Category              =     require('../../../model/Category')
+const {validateId}          =     require('../../../check/public')
 
 //导出模块
 module.exports = async cxt => {

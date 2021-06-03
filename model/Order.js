@@ -35,7 +35,7 @@ const OrderSchema = new Schema({
 
     //金额
     total:{
-        type:Double,
+        type:Number,
         required:true,
     },
 
@@ -47,6 +47,6 @@ const OrderSchema = new Schema({
 })
 
 //建立订单集合类
-const Order = mongoose.model('order',OrderSchema)
+const Order = mongoose.model('Order',OrderSchema)
 
-model.exports = Order
+module.exports = Order

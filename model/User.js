@@ -1,6 +1,7 @@
 //引入模块
 const mongoose      =       require('mongoose')
 const bcrypt        =       require('bcrypt')                  // hash密码
+const {adminUser}   =       require('../config/modelInItConfig')
 
 //模型规则类
 const { Schema } = mongoose
@@ -66,17 +67,11 @@ User.findOne({'email': 'admin@jsfei.cn'}).then(async result => {
 		// 生成盐
 		const salt = await bcrypt.genSalt(10)
 		// 使用盐对密码进行加密
-		const password = await bcrypt.hash('123456', salt)
-        //创建用户
-	    const dataresult = await User.create({
-			nickName: 'itAdmin',
-			email: 'admin@jsfei.cn',
-			password: password,
-			role: 'admin',
-			avatar: null,
-			createTime: new Date,
-			status: 1
-		});
+		const password = await bcrypt.hash(adminUser.password, salt)
+    //加密后的密码
+    adminUser.password= password
+    //创建用户
+    const dataresult = await User.create(adminUser);
 	}
 })
 

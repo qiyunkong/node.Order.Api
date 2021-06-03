@@ -108,6 +108,7 @@ Ctrl + Shift +  “-”
 34. mongoose时间范围搜索 不然搜索会有报错现象500  [学生案例](https://blog.csdn.net/m0_37857819/article/details/106559709)
 35. mongoose 链式查询 条件嵌套 [学习案例](https://blog.csdn.net/Momo_Joanne/article/details/105042498) **[语法参考](https://segmentfault.com/a/1190000021010300?utm_source=tag-newest)** [参考案例](https://blog.csdn.net/weixin_34010949/article/details/88750591)
 36. 分类ID查询有BUG
+37. _V 字段 (mongoose)[https://www.cnblogs.com/toward-the-sun/p/6365782.html]
 
 ​	<del>划线</del>
 
@@ -178,6 +179,22 @@ mongod  --dbpath 路径 --port 27018
 ```
 
  
+
+自动化Model数据思想
+
+1. 前端页面表单提交模型结构
+2. 后端处理模型JSON数据
+3. 数据库表创建
+4. 访问数据模型页面   /app/:model
+5. 后台
+
+
+
+
+
+
+
+
 
 
 

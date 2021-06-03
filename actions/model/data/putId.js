@@ -1,8 +1,8 @@
 //引入模块
 const { pick }           =     require('lodash')
-const Category           =     require('../../model/Category')
-const { validateId }     =     require('../../check/public/index')
-const { updateId }       =     require('../../servers/base')
+const Category           =     require('../../../model/Category')
+const { validateId }     =     require('../../../check/public')
+const { updateId }       =     require('../../../servers/base')
 module.exports = async cxt => {
     //获取POST参数
     const body = cxt.request.body

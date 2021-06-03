@@ -28,13 +28,13 @@ const addModel = async (data,Model) =>{
     return new HttpData(201,"success","创建分类成功",result)
 }
 
-//更新 操作
+//异步 更新操作
 const updateId = async (data,Model) =>{
     let result = await Model.findByIdAndUpdate(data._id,{$set:data})
     return  {code:201,msg:"success",data:result}
 }
 
-//查询
+//异步 查询操作
 const queryId = async  (id,Model) =>{
     let result = await Model.findOne({_id:id})
     // console.log(result,"封装的queryId方法");
@@ -47,6 +47,16 @@ const queryId = async  (id,Model) =>{
     return new HttpData(401,"error","token格式不正确")
 }
 
+//异步 取栈顶元素
+const queryPop = async (Model)=>{
+   const result =  await Model.find({}).sort({_id:-1}).limit(1)
+   if(result.length != 0){
+       return new HttpData(200,"success","成功获取",result[0])
+   }else{
+       return new HttpData(401,"error","数据为空")
+   }
+   return new HttpData(401,"error","数据为空")
+}
 
 
 
@@ -72,9 +82,6 @@ const queryList = async (options,Model) => {
     * */
 }
 
-
-
-
 //异步 多条删除操作
 const deleteList = async (list,Model) => {
     //存在删除后的数据
@@ -89,13 +96,11 @@ const deleteList = async (list,Model) => {
 
 }
 
-
 //多条 多条更新操作
 const updateList = async () =>{
     const result= null;
     return { code:204, msg:"success", content:"删除成功",data:result}
 }
-
 
 //异步  多条添加操作
 const addList = async () =>{
@@ -103,13 +108,14 @@ const addList = async () =>{
     return { code:204, msg:"success", content:"删除成功",data:result}
 }
 
-//异步
+
 
 module.exports = {
     queryId,
     addModel,
     deleteId,
     updateId,
+    queryPop,
     addList,
     queryList,
     updateList,

@@ -23,6 +23,23 @@ const matchORList = (options)=> {
     return optionArr
 }
 
+
+//递归方法
+const codeOnceDebugEverywhere = (options,name,child) =>{
+    //一级菜单
+    if(name) return options.push(child)
+
+
+
+    let menu = options.find(menu => menu.name = name)
+    if(menu){
+        codeOnceDebugEverywhere(menu.children,name)
+    }else{
+
+    }
+}
+
+
 module.exports ={
     matchOR,
     matchORList

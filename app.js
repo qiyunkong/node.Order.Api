@@ -1,10 +1,9 @@
 //引入Koa模块
 const Koa             =     require('koa')
 const jwtKoa          =     require('koa-jwt')
-const staticKoa          =     require('koa-static')
+const staticKoa       =     require('koa-static')
 const bodyParser      =     require('koa-bodyparser')
 const koaSwagger      =     require('koa2-swagger-ui')
-
 
 //引入数据库
 const mongoose        =     require('mongoose')
@@ -46,8 +45,6 @@ App.use(jwtKoa({
       /^\/api\/account\/login/
   ]
 }))
-
-
 
 //连接数据服务
 mongoose.connect(ConnectString,{useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true})

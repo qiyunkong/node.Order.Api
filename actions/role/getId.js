@@ -1,5 +1,5 @@
 //导入模块
-const Category              =     require('../../model/Category')
+const Role              =     require('../../model/Role')
 const {validateId}          =     require('../../check/public/index')
 
 //导出模块
@@ -16,7 +16,7 @@ module.exports = async cxt => {
     }
     //格式符合要求 继续向下执行
     // 查询用户信息
-    const Category = await Category.findById(id).select('-password');
+    const result = await Role.findById(id);
     //响应
-    cxt.body =  { code:200, msg:"success", content:'查询成功',data:Category }
+    cxt.body =  { code:200, msg:"success", content:'查询成功',data:result }
 };

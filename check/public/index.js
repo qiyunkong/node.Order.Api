@@ -12,7 +12,21 @@ const validateId = id => {
     })
 }
 
+const validateListId = (list) => {
+    for(const item of list){
+        //验证
+        let {error} = validateId(item)
+        if(error){
+            return error
+        }
+
+    }
+    return false
+}
+
+
 //导出模块
 module.exports = {
     validateId,
+    validateListId,
 }
