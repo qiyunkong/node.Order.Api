@@ -87,7 +87,7 @@ router.put('/', putAction)
 
 /**
  * @swagger
- * /api/role/{id}:
+ * /api/role:
  *   delete:
  *     summary: 删除角色
  *     description: 根据id删除指定角色信息

@@ -11,7 +11,6 @@ const MenuSchema = new Schema({
   //菜单图标
   icon:{
     type:String,
-    required:true,
     minlength:2,
     maxlength:30,
   },
@@ -29,7 +28,7 @@ const MenuSchema = new Schema({
   },
 
   //父节点
-  children:{
+  parentId:{
     type:String,
     required:true,
     default:'0'

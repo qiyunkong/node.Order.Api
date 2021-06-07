@@ -69,7 +69,7 @@ router.post('/', postAction)
 
 /**
  * @swagger
- * /api/orderid:
+ * /api/order:
  *   put:
  *     summary: 更新订单
  *     description: 根据id更新指定订单信息
@@ -89,7 +89,7 @@ router.put('/', putAction)
 
 /**
  * @swagger
- * /api/order/{id}:
+ * /api/order:
  *   delete:
  *     summary: 删除订单
  *     description: 根据id删除指定订单信息
@@ -103,7 +103,7 @@ router.put('/', putAction)
  *         type: number
  *     responses:
  *       200:
- *         description: 成功获取
+ *         description: 成功删除
  */
 router.delete('/', deleteAction)
 

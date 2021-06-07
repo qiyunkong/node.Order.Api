@@ -109,6 +109,9 @@ Ctrl + Shift +  “-”
 35. mongoose 链式查询 条件嵌套 [学习案例](https://blog.csdn.net/Momo_Joanne/article/details/105042498) **[语法参考](https://segmentfault.com/a/1190000021010300?utm_source=tag-newest)** [参考案例](https://blog.csdn.net/weixin_34010949/article/details/88750591)
 36. 分类ID查询有BUG
 37. _V 字段 (mongoose)[https://www.cnblogs.com/toward-the-sun/p/6365782.html]
+38. 控制器优化action 通过继承来简化共同方法
+
+
 
 ​	<del>划线</del>
 
@@ -187,6 +190,12 @@ mongod  --dbpath 路径 --port 27018
 3. 数据库表创建
 4. 访问数据模型页面   /app/:model
 5. 后台
+
+
+
+
+
+
 
 
 
