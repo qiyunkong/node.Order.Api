@@ -1,18 +1,11 @@
-//菜单列表
-const queryList = async (options,Model) => {
-  // 结构子类节点
-  const {parentId} = options
-  const result = await Model.where({parentId:parentId.toString()}).find({}).sort('-createTime')
-  //返回前端数据
-  return  {code:200,msg:"success",content:'获取菜单列表成功',data:result}
-}
+const Menu  = require('../model/Model')
 
-//菜单JSON
-const queryJson = async (options,Model) =>{
+//权限菜单JSON
+const queryJson = async (options) =>{
   //结构子类节点
   const {parentId} = options
-  const result = await Model.find({}).sort('sortNo')
-  const menuList= queryChild(parentId,result);
+  const result = await Menu.find({}).sort('sortNo')
+  const menuList= queryChild(parentId,result)
   return  {code:200,msg:"success",content:'获取菜单JSON成功',data:menuList}
 
 }
@@ -31,13 +24,13 @@ const queryChild = (id,MenuList)=>{
       if(!icon){
         if(children.length == 0){
           return{
-            name,
-            path,
+            title:name,
+            key:path,
           }
         }else{
           return{
-            name,
-            path,
+            title:name,
+            key:path,
             children
           }
         }
@@ -45,15 +38,13 @@ const queryChild = (id,MenuList)=>{
       }else{
         if(children.length == 0){
           return{
-            icon,
-            name,
-            path,
+            title:name,
+            key:path,
           }
         }else{
           return{
-            icon,
-            name,
-            path,
+            title:name,
+            key:path,
             children
           }
         }
@@ -66,6 +57,5 @@ const queryChild = (id,MenuList)=>{
 
 
 module.exports = {
-  queryList,
-  queryJson,
+  queryJson
 }

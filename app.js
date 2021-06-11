@@ -14,6 +14,7 @@ const swagger         =     require('./config/swaggerConfig')
 const {host,port}     =     require('./config/serviceConfig')
 const ConnectString   =     require('./config/mongodbConfig')
 const { SECRET }      =     require('./config/constantsConfig')
+const {log}           =     require('./filter/log')
 
 //构造对象
 const App = new Koa()
@@ -34,6 +35,8 @@ App.use(koaSwagger({
     url: '/swagger.json',               //example path to json 其实就是之后swagger-jsdoc生成的文档地址
   }
 }))
+
+App.use(log)
 
 // koa实现jwt验证
 App.use(jwtKoa({

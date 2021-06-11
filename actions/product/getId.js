@@ -1,5 +1,5 @@
 //导入模块
-const Category              =     require('../../model/Category')
+const Product              =     require('../../model/Product')
 const {validateId}          =     require('../../check/public')
 const {queryId}             =     require('../../servers/base')
 
@@ -17,7 +17,8 @@ module.exports = async cxt => {
     }
     //格式符合要求 继续向下执行
     // 查询用户信息
-    const body = await queryId(id,Category);
+    const body = await queryId(id,Product);
     //响应
     cxt.body =  body
-};
+
+}

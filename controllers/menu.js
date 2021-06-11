@@ -1,7 +1,7 @@
 //引入模块
 const Router = require('koa-router')
 const {adminMenu} = require('../config/modelInItConfig')
-const {postAction,getAction,putAction} = require('../actions/menu')
+const {postAction,getAction,putAction,getMenuJson} = require('../actions/menu')
 //构造函数
 const  router = new Router()
 
@@ -9,10 +9,7 @@ const  router = new Router()
 
 
 //发送菜单
-router.get('/dev',async cxt =>{
-
-    cxt.body = adminMenu;
-})
+router.get('/dev',getMenuJson)
 
 
 //修改

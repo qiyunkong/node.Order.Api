@@ -4,11 +4,18 @@ const {matchOR} = require('./tool')
 const queryList = async (options,Model) => {
     // 查询用户信息
     const {parentId} = options
-    const current  =  delete options.current //删除成功为true 失败为false
-    const pageSize =  delete options.pageSize
+    const current  =  delete options.current    //current 删除 删除成功为true 失败为false
+    const pageSize =  delete options.pageSize   //
     delete options.parentId
     options = matchOR(options)
-    const result = await Model.where({deleted: 1}).where({parentId:parentId.toString()}).find(options).sort('-createTime')
+    let result;
+    if(!parentId){
+        result =  await Model.where({deleted: 1}).find(options).sort('-createTime')
+    }else{
+        result =  await Model.where({deleted: 1}).where({parentId:parentId.toString()}).find(options).sort('-createTime')
+    }
+
+
     //数组
     return  {code:200,msg:"success",content:'获取用户列表成功',data:result}
     /*

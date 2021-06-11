@@ -3,5 +3,5 @@ module.exports = {
     getAction:require('./getList'),
     postAction:require('./postBody'),
     deleteAction:require('./deleteList'),
-    getCategory:require('./getId')
+    getProduct:require('./getId')
 }

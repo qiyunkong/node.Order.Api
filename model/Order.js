@@ -40,7 +40,7 @@ const OrderSchema = new Schema({
     },
 
     //购买商品[]
-    ProductArray:{
+    productArray:{
         type:Array,
         required:true,
     }

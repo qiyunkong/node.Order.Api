@@ -6,12 +6,18 @@ const { Schema } = mongoose
 
 //设置用户表的数据格式
 const productSchema = new Schema({
-    imageList:Array, // [图片1的name,图片2的name...]
-    name:String, //商品的名字
-    desc:String, //商品的描述
-    price:String,//商品价格
-    categoryId:String,  //分类Id
-    createTime:Date.now  //创建时间
+    name:String,            //商品的名字
+    desc:String,            //商品的描述
+    price:Number,           //商品价格
+    status:Boolean,         //是否展示 是否下架
+    imageList:Array,        // [图片1的name,图片2的name...]
+    specsList:Array,        //规格
+    categoryId:Array,       //分类Id
+    createTime:{            //创建时间
+        type:Date,
+        default:Date.now
+    },
+
 
 })
 

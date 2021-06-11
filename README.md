@@ -110,6 +110,7 @@ Ctrl + Shift +  “-”
 36. 分类ID查询有BUG
 37. _V 字段 (mongoose)[https://www.cnblogs.com/toward-the-sun/p/6365782.html]
 38. 控制器优化action 通过继承来简化共同方法
+39. 洋葱模型 [学习地址](https://segmentfault.com/a/1190000013981513)
 
 
 
@@ -190,6 +191,57 @@ mongod  --dbpath 路径 --port 27018
 3. 数据库表创建
 4. 访问数据模型页面   /app/:model
 5. 后台
+
+
+
+```json
+{
+  request: {
+    method: 'GET',
+    url: '/favicon.ico',
+    header: {
+      host: '127.0.0.1:3001',
+      connection: 'keep-alive',
+      'sec-ch-ua': '" Not;A Brand";v="99", "Google Chrome";v="91", "Chromium";v="91"',
+      'sec-ch-ua-mobile': '?0',
+      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Safari/537.36',
+      accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
+      'sec-fetch-site': 'same-origin',
+      'sec-fetch-mode': 'no-cors',
+      'sec-fetch-dest': 'image',
+      referer: 'http://127.0.0.1:3001/api/category/',
+      'accept-encoding': 'gzip, deflate, br',
+      'accept-language': 'zh-CN,zh;q=0.9',
+      cookie: 'Webstorm-c4e18151=e2dc4d70-b1bc-4a5c-b6b4-4f9b04b7d87a'
+    }
+  },
+  response: {
+    status: 404,
+    message: 'Not Found',
+    header: [Object: null prototype] {}
+  },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/favicon.ico',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>'
+}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -338,3 +390,80 @@ const Settings: LayoutSettings & {
 
 
 1.
+
+
+
+## 简单的算法题
+
+JSON 集合数据  数组形式
+
+```js
+[
+{"id":"xxx00","name":"江苏省","icon":"xxxIcon" ,"parenId":"0"},
+{"id":"xxx01","name":"四川省","icon":"xxxIcon" ,"parenId":"0"},
+{"id":"xxx02","name":"徐州市","icon":"       " ,"parenId":"xxx00"},
+{"id":"xxx03","name":"成都市","icon":"       " ,"parenId":"xxx01"},
+{"id":"xxx04","name":"南京市","icon":"xxxIcon" ,"parenId":"xxx00"},
+{"id":"xxx05","name":"河北省","icon":"xxxIcon" ,"parenId":"0"},
+{"id":"xxx06","name":"河南省","icon":"xxxIcon" ,"parenId":"0"},
+]
+```
+
+JSON 集合数据  表格形式
+
+| Id    | name   | Icon （可为空） | parenId |
+| ----- | ------ | --------------- | ------- |
+| xxx00 | 江苏省 | xxxIcon         | 0       |
+| xxx01 | 四川省 | xxxIcon         | 0       |
+| xxx02 | 徐州市 |                 | xxx00   |
+| xxx03 | 成都市 |                 | xxx01   |
+| xxx04 | 南京市 |                 | xxx00   |
+| xxx05 | 河北省 | xxxIcon         | 0       |
+| xxx06 | 河南省 | xxxIcon         | 0       |
+
+写一个方法根据parenId属性和上面给出JSON集合  返回一个数组集合   
+
+```json
+// 如果parenId 是 0
+[
+    {
+        "name":"江苏省",
+        "icon":"xxxIcon" ,
+        "children":[
+            {"name":"徐州市"},
+            {"name":"南京市"},
+        ]
+    },
+    { 
+        "name":"四川省",
+        "icon":"xxxIcon" ,
+        "children":[
+            {"name":"成都市"}       
+        ]
+    },
+    {"name":"河北省","icon":"xxxIcon" },
+    {"name":"河南省","icon":"xxxIcon" },
+]
+
+//如果parenId 是 xxx00
+[
+    {"name":"徐州市"},
+    {"name":"南京市"},
+]
+
+```
+
+
+
+
+
+
+
+# 接口设计问题
+
+分类接口：传参问题，应该设置一个个默认值。
+
+
+
+
+
