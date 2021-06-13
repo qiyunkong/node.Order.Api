@@ -1,8 +1,9 @@
 //引入模块
 const { pick }           =     require('lodash')
-const Product            =     require('../../model/Product')
-const { validateId }     =     require('../../check/public/index')
+const Tag                =     require('../../model/Tag')
+const { validateId }     =     require('../../check/public')
 const { updateId }       =     require('../../servers/base')
+
 module.exports = async cxt => {
     //获取POST参数
     const body = cxt.request.body
@@ -16,7 +17,7 @@ module.exports = async cxt => {
         return
     }
     //通过验证
-    let httpData = await updateId(body,Product)
+    let httpData = await updateId(body,Tag)
     //响应
     cxt.response.status = httpData.code
     cxt.body = httpData

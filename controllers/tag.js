@@ -1,30 +1,11 @@
 //引入模块
 const Router        =     require('koa-router')
+const { postAction, getAction, deleteAction, putAction,IdAction } = require('../actions/tag')
 
 //构造函数
 const router = new Router()
 
-/**
- * @swagger
- * /api/tags/{id}:
- *   get:
- *     summary: 获取标签信息
- *     description: 根据ID获取指定的标签信息
- *     tags:
- *       - Tag 标签服务
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         description: 标签ID
- *         type: number
- *     responses:
- *       200:
- *         description: 成功获取
- */
-router.get('/:id', async (cxt, next) => {
-    cxt.body = {name:'info标签接口API'}
-})
+
 
 /**
  * @swagger
@@ -44,9 +25,7 @@ router.get('/:id', async (cxt, next) => {
  *       200:
  *         description: 成功获取
  */
-router.get('/', async (cxt, next) => {
-    cxt.body = {name:'list标签接口API'}
-})
+router.get('/',getAction)
 
 /**
  * @swagger
@@ -66,9 +45,7 @@ router.get('/', async (cxt, next) => {
  *       200:
  *         description: 成功获取
  */
-router.post('/', async (cxt, next) => {
-    cxt.body = {name:'add标签接口API'}
-})
+router.post('/', postAction)
 
 /**
  * @swagger
@@ -88,10 +65,7 @@ router.post('/', async (cxt, next) => {
  *       200:
  *         description: 成功获取
  */
-router.put('/:id', async (cxt, next) => {
-    cxt.body = {name:'put标签接口API'}
-})
-
+router.put('/',putAction)
 
 /**
  * @swagger
@@ -111,9 +85,27 @@ router.put('/:id', async (cxt, next) => {
  *       200:
  *         description: 成功获取
  */
-router.delete('/:id', async (cxt, next) => {
-    cxt.body = {name:'delete标签接口API'}
-})
+router.delete('/', deleteAction)
+
+/**
+ * @swagger
+ * /api/tags/{id}:
+ *   get:
+ *     summary: 获取标签信息
+ *     description: 根据ID获取指定的标签信息
+ *     tags:
+ *       - Tag 标签服务
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: 标签ID
+ *         type: number
+ *     responses:
+ *       200:
+ *         description: 成功获取
+ */
+router.get('/:id',IdAction)
 
 
 //导出模块

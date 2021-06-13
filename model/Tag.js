@@ -7,7 +7,7 @@ const { Schema } = mongoose
 const tagSchema = new Schema({
 
     //标签内容
-    content:{
+    name:{
         type:String,
         maxlength:20,
     },
@@ -25,13 +25,10 @@ const tagSchema = new Schema({
     },
 
     //更新时间
-    updateTime:{
-        type:Date,
-        default:Date.now
-    },    
+    updateTime:{type:Date},
 
 })
 
 const Tag = mongoose.model('Tag',tagSchema)
 
-module.exports = Empower
+module.exports = Tag

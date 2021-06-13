@@ -1,16 +1,22 @@
 
 //模糊参数 条件对象
 const  matchOR = (options)=> {
-    let optionArr = []
-    for(let key in options){
-        let item = {}
-        item[key] = {$regex:options[key]}
-        optionArr.push(item)
+    if(!options._id){
+        let optionArr = []
+        for(let key in options){
+            let item = {}
+            item[key] = {$regex:options[key]}
+            optionArr.push(item)
+        }
+        if(optionArr.length != 0){
+            return {$or:optionArr}
+        }
+        return {}
+    }else{
+        return {
+            _id:options._id
+        }
     }
-    if(optionArr.length != 0){
-       return {$or:optionArr}
-    }
-    return {}
 }
 
 //嵌套|链式 条件对象

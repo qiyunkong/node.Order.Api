@@ -9,26 +9,6 @@ const router = new Router()
 
 /**
  * @swagger
- * /api/role{id}:
- *   get:
- *     summary: 获取角色信息
- *     description: 根据ID获取指定的角色信息
- *     tags:
- *       - Role 角色服务
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         description: 角色ID
- *         type: number
- *     responses:
- *       200:
- *         description: 成功获取
- */
-router.get('/:id',IdAction)
-
-/**
- * @swagger
  * /api/role:
  *   get:
  *     summary: 获取角色列表
@@ -104,6 +84,27 @@ router.put('/', putAction)
  *         description: 成功获取
  */
 router.delete('/', deleteAction)
+
+/**
+ * @swagger
+ * /api/role{id}:
+ *   get:
+ *     summary: 获取角色信息
+ *     description: 根据ID获取指定的角色信息
+ *     tags:
+ *       - Role 角色服务
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: 角色ID
+ *         type: number
+ *     responses:
+ *       200:
+ *         description: 成功获取
+ */
+router.get('/:id',IdAction)
+
 
 //导出模块
 module.exports = router.routes();

@@ -1,6 +1,7 @@
 //引入Koa模块
 const Koa             =     require('koa')
 const jwtKoa          =     require('koa-jwt')
+const cors            =     require('koa2-cors')
 const staticKoa       =     require('koa-static')
 const bodyParser      =     require('koa-bodyparser')
 const koaSwagger      =     require('koa2-swagger-ui')
@@ -9,6 +10,7 @@ const koaSwagger      =     require('koa2-swagger-ui')
 const mongoose        =     require('mongoose')
 
 //引入配置文件
+const Cors            =     require('./config/corsConfig')
 const router          =     require('./config/routerConfig')
 const swagger         =     require('./config/swaggerConfig')
 const {host,port}     =     require('./config/serviceConfig')
@@ -18,8 +20,13 @@ const {log}           =     require('./filter/log')
 
 //构造对象
 const App = new Koa()
-  
+
+
+
+
 //中间件
+//App.use(log)                            //日志中间件
+App.use(cors(Cors))
 App.use(bodyParser({
   enableTypes:['json', 'form', 'text']
 }))                                     //解析请求
@@ -36,7 +43,6 @@ App.use(koaSwagger({
   }
 }))
 
-App.use(log)
 
 // koa实现jwt验证
 App.use(jwtKoa({
