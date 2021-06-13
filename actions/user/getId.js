@@ -1,6 +1,7 @@
 //导入模块
-const Role                  =     require('../../model/Role')
-const {validateId}          =     require('../../check/public/index')
+const User                  =     require('../../model/User')
+const {validateId}          =     require('../../check/public')
+const {queryId}                    =     require('../../servers/base')
 
 //导出模块
 module.exports = async cxt => {
@@ -15,8 +16,8 @@ module.exports = async cxt => {
         return
     }
     //格式符合要求 继续向下执行
-    // 查询信息
-    const result = await Role.findById(id);
+    // 查询用户信息
+    const result = await queryId(id);
     //响应
     cxt.body =  { code:200, msg:"success", content:'查询成功',data:result }
 };

@@ -1,5 +1,5 @@
 //导入模块
-const Role              =     require('../../model/Role')
+const Role                  =     require('../../model/Role')
 const {addModel}            =     require('../../servers/base')
 //暴露模块  
 module.exports = async cxt => {

@@ -36,7 +36,7 @@ const UserSchema = new Schema({
     //头像
     avatar:{                        
         type:String,
-        default:null
+        default:'/avatar/default.svg'
     },
 
     //创建时间
@@ -53,7 +53,7 @@ const UserSchema = new Schema({
     },
 
     //角色id
-    roleId:String,                  
+    roleId:{type:Schema.Types.ObjectId, ref: 'Role'},
 
 
 },{versionKey: false})

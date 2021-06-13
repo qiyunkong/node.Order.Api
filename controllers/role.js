@@ -1,7 +1,8 @@
 //引入模块
 const Router   =    require('koa-router')
 
-const { postAction, getAction, deleteAction, putAction,IdAction } = require('../actions/role')
+const { postAction, getAction, deleteAction, putAction,IdAction,getTree,getAdminTree } = require('../actions/role')
+
 
 //构造函数
 const router = new Router()
@@ -20,6 +21,11 @@ const router = new Router()
  *         description: 成功获取
  */
 router.get('/', getAction)
+
+router.get('/tree/data',getTree)
+
+router.get('/tree/admin',getAdminTree)
+
 
 /**
  * @swagger

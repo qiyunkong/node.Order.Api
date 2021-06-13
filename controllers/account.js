@@ -1,12 +1,8 @@
 //引入模块
 const Router                =     require('koa-router')
-const {login}               =     require('../actions/account')
-const {currentUser}         =     require('../actions/user')
+const {login,getCurrent}    =     require('../actions/account')
 //构造函数
 const router = new Router()
-
-
-
 
 
 /**
@@ -130,7 +126,7 @@ router.put('/restPwd',async (cxt,next)=>{
  *       200:
  *         description: 成功获取
  */
-router.get('/currentUser',currentUser )
+router.get('/currentUser',getCurrent)
 
 //导出模块
 module.exports = router.routes();

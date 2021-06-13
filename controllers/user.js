@@ -1,30 +1,9 @@
 //引入模块
 const Router        =     require('koa-router')
+const { postAction, getAction, deleteAction, putAction,IdAction } = require('../actions/user')
 
 //构造函数
 const router = new Router()
-
-/**
- * @swagger
- * /api/users/{id}:
- *   get:
- *     summary: 获取用户信息
- *     description: 根据ID获取指定的用户信息
- *     tags:
- *       - User 用户服务
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         description: 用户ID
- *         type: number
- *     responses:
- *       200:
- *         description: 成功获取
- */
-router.get('/:id', async (cxt, next) => {
-    cxt.body = {name:'info标签接口API'}
-})
 
 /**
  * @swagger
@@ -44,9 +23,7 @@ router.get('/:id', async (cxt, next) => {
  *       200:
  *         description: 成功获取
  */
-router.get('/', async (cxt, next) => {
-    cxt.body = {name:'list标签接口API'}
-})
+router.get('/',getAction)
 
 /**
  * @swagger
@@ -66,9 +43,7 @@ router.get('/', async (cxt, next) => {
  *       200:
  *         description: 成功获取
  */
-router.post('/', async (cxt, next) => {
-    cxt.body = {name:'add标签接口API'}
-})
+router.post('/',postAction)
 
 /**
  * @swagger
@@ -88,10 +63,7 @@ router.post('/', async (cxt, next) => {
  *       200:
  *         description: 成功获取
  */
- router.put('/:id', async (cxt, next) => {
-    cxt.body = {name:'put标签接口API'}
-})
-
+router.put('/',putAction)
 
 /**
  * @swagger
@@ -111,10 +83,27 @@ router.post('/', async (cxt, next) => {
  *       200:
  *         description: 成功获取
  */
-router.delete('/:id', async (cxt, next) => {
-    cxt.body = {name:'delete标签接口API'}
-})
+router.delete('/',deleteAction)
 
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   get:
+ *     summary: 获取用户信息
+ *     description: 根据ID获取指定的用户信息
+ *     tags:
+ *       - User 用户服务
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         description: 用户ID
+ *         type: number
+ *     responses:
+ *       200:
+ *         description: 成功获取
+ */
+router.get('/:id',IdAction)
 
 //导出模块
 module.exports = router.routes();

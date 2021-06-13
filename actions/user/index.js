@@ -1,8 +1,7 @@
-module.exports.getList             =    require('./find')
-module.exports.postUser            =    require('./create')
-module.exports.getID               =    require('./findById')
-module.exports.currentUser         =    require('./currentUser')
-module.exports.putId               =    require('./findByIdAndUpdate')
-module.exports.deleteId            =    require('./findByIdAndDelete')
-
-
+module.exports = {
+  IdAction:require('./getId'),
+  putAction:require('./putId'),
+  getAction:require('./getList'),
+  postAction:require('./postBody'),
+  deleteAction:require('./deleteList'),
+}

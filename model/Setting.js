@@ -56,7 +56,8 @@ const SettingSchema = new Schema({
 
     //图片网站路径
     staticSrc:{
-      type:String
+      type:String,
+      default:adminSetting.staticSrc,
     },
 
 
