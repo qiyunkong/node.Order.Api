@@ -7,6 +7,5 @@ module.exports = async cxt => {
   //短路算法
   options.parentId || (options.parentId='0')
   const httpData = await queryTreeRole(options,Menu)
-  console.log(httpData)
   cxt.body = httpData.data
 }

@@ -1,7 +1,7 @@
 //引入模块
 const Router = require('koa-router')
 
-const { postAction, getAction, deleteAction, putAction,getCategory } = require('../actions/category')
+const { postAction, getAction, deleteAction, putAction,getCategory,getCategoryTree } = require('../actions/category')
 
 //构造函数
 const router = new Router()
@@ -120,6 +120,8 @@ router.put('/', putAction)
  *         description: 成功获取
  */
 router.delete('/', deleteAction)
+
+router.get('/tree/category',getCategoryTree)
 
 //导出模块
 module.exports = router.routes();

@@ -28,6 +28,51 @@ const queryList = async (options,Model) => {
     * */
 }
 
+
+//获取商品分类
+const queryProductCategory = async (keyInArr,Model) =>{
+    //查询符合条件的
+    const result  = await Model.find({_id:{$in:keyInArr}}).sort('sortNo')
+    //格式转化Tree  queryTreeMenuChild 转化为菜单格式
+    const menuList = queryTreeCategoryChild(0,result)
+    //返回
+    return  {code:200,msg:"success",content:'获取菜单JSON成功',data:menuList}
+}
+
+//转化为-Tree分类结构
+const queryTreeCategoryChild = (id,MenuList)=>{
+    //获取出最外层 ‘0’ --》 开始
+    let list = MenuList.filter((item)=>item.parentId == id)
+    //判断长度 是否为零
+    if(list.length != 0){
+        //承装子元素的容器
+        let children = []
+        //更换键值
+        MenuList = list.map(({_id,name})=>{
+            //遍历是否还有子节点
+            children = queryTreeCategoryChild(_id,MenuList)
+            if(children.length == 0){
+                return{
+                    value:_id,
+                    label:name,
+                    isLeaf:false,
+                }
+            }else{
+                return{
+                    value:_id,
+                    label:name,
+                    isLeaf:true,
+                    children
+                }
+            }
+        })
+        return MenuList
+    }
+    return []
+}
+
+
 module.exports = {
     queryList,
+    queryProductCategory,
 }

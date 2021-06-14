@@ -1,6 +1,7 @@
 
 //模糊参数 条件对象
 const  matchOR = (options)=> {
+    if(!options) return {}
     if(!options._id){
         let optionArr = []
         for(let key in options){

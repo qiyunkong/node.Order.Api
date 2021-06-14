@@ -140,6 +140,7 @@ const adminSetting = {
 
 //初始化模型函数
 const modelDavInIt = async ()=>{
+  //console.log(mongoose.models); 数据库连接前执行
   const data =  await ModelDva.find({})
   //初始化全部机甲
   for(let i = 0; i<data.length ; i++){
