@@ -67,6 +67,7 @@ const queryList = async (options,Model) => {
     const current  =  delete options.current
     const pageSize =  delete options.pageSize
     options = matchOR(options)
+    console.log(options)
     const result = await Model.find(options).sort('-createTime')
 
     //数组

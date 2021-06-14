@@ -13,6 +13,7 @@ const accounts      =     require('../controllers/account')
 const setting       =     require('../controllers/setting')
 const category      =     require('../controllers/category')
 const payment       =     require('../controllers/payment')
+const mobile        =     require('../controllers/mobile')
 
 
 //构造函数
@@ -32,8 +33,9 @@ router.use('/model',model)
 router.use('/system',setting)
 router.use('/product',product)
 router.use('/account',accounts)
-router.use('/category',category)
 router.use('/payment',payment)
+router.use('/category',category)
+router.use('/mobile',mobile)
 
 //导出模块
 module.exports = router;

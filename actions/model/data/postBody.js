@@ -1,5 +1,5 @@
 //导入模块
-const ModelDva              =     require('../../../model/Model')
+const ModelDva              =     require('../../../model/ModelDva')
 const {addModel}            =     require('../../../servers/base')
 //暴露模块  
 module.exports = async cxt => {

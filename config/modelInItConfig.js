@@ -1,5 +1,9 @@
 //引入其他配置
-const {host,port}   = require('../config/serviceConfig')
+const {host,port}   =     require('../config/serviceConfig')
+const ModelDva      =     require('../model/ModelDva')
+const mongoose      =     require('mongoose')
+
+const {Schema} = mongoose;
 
 //初始化菜单配置
 const adminMenu = [
@@ -134,9 +138,26 @@ const adminSetting = {
   staticSrc:`http://${host}:${port}`,
 }
 
+//初始化模型函数
+const modelDavInIt = async ()=>{
+  const data =  await ModelDva.find({})
+  //初始化全部机甲
+  for(let i = 0; i<data.length ; i++){
+    const {name,schemaDva} = data[0]
+    //通过机甲构建
+    const DvaSchema = new Schema(schemaDva)
+    await mongoose.model(name,DvaSchema);
+  }
+  console.log("modelDavInIt==》机甲类型初始化完成")
+
+}
+
+
+
 //系统初始化配置
 module.exports = {
   adminMenu,
   adminUser,
   adminSetting,
+  modelDavInIt,
 }

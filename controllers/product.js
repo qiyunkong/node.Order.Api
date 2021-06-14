@@ -3,6 +3,7 @@ const Router = require('koa-router')
 
 const { postAction, getAction, deleteAction, putAction, getProduct } = require('../actions/product')
 
+
 //构造函数
 const router = new Router()
 
@@ -104,6 +105,8 @@ router.put('/', putAction)
  *         description: 成功获取
  */
 router.delete('/', deleteAction)
+
+
 
 //导出模块
 module.exports = router.routes();

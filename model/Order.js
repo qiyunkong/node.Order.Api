@@ -6,7 +6,7 @@ const { Schema } = mongoose
 
 const OrderSchema = new Schema({
 
-    //订单号  GFH/年/月/日/是否已取消/支付金额/26字母/商品长度/
+    //订单号  GFR/年/月/日/是否已取消/支付金额/26字母/商品长度/
     orderNo:{
         type:String,
         require:true,
