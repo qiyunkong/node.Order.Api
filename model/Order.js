@@ -12,7 +12,11 @@ const OrderSchema = new Schema({
         require:true,
         maxlength:120
     },
-
+    //取单号
+    orderOutNo:{
+        type:Number,
+        required:true,
+    },
     //创建日期
     createTime:{
         type:Date,
@@ -21,9 +25,9 @@ const OrderSchema = new Schema({
 
     //支付状态
     paymentStatus:{
-        type:Number,
+        type:Boolean,
         required:true,
-        default:1
+        default:false
     },
 
     //支付方式

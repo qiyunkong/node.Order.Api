@@ -3,7 +3,7 @@ const Router        =     require('koa-router')
 const Order         =     require('../model/Order')
 const Product       =     require('../model/Product')
 const Category      =     require('../model/Category')
-const {addModel,queryId,updateId,queryList}   =     require('../servers/base')
+const {addModel,queryId,updateId,queryList,queryPop}   =     require('../servers/base')
 const {validateId}  = require('../check/public')
 const { postAction, getAction, deleteAction, putAction,IdAction } = require('../actions/tag')
 //构造函数
@@ -22,13 +22,16 @@ router.get('/product',async (cxt)=>{
   //商品数据
   const productData  = await Product.find({categoryId:{$in:categoryArr}})
   //遍历小程序数据格式
-  const data = categoryData.map(({_id,name})=>{
+  const data = []
+  categoryData.forEach(({_id,name})=>{
     const foods =  productData.filter((item)=>{
       return  item.categoryId.includes(_id)
     })
-    return {
-      name,
-      foods,
+    if(foods.length != 0){
+      data.push({
+        name,
+        foods,
+      })
     }
   })
 
@@ -47,11 +50,18 @@ router.get('/product',async (cxt)=>{
 })
 
 
-//添加点单接口
+//生成订单接口
 router.post('/order', async (cxt)=>{
   let httpData
   //获取POST参数
-  const body = cxt.request.body
+  let body = cxt.request.body
+  //取出今天的栈顶元素 如果没有就从1自增
+  const result =  await Order.find({}).sort({_id:-1}).limit(1)
+  if(result.length == 0){
+    body.orderOutNo = 1 
+  }else{
+    body.orderOutNo = result[0].orderOutNo + 1;
+  }
   httpData = await addModel(body,Order)
   cxt.response.status = httpData.code
   //响应
@@ -91,7 +101,6 @@ router.get('/order',async (cxt)=>{
 
 
 })
-
 
 
 
