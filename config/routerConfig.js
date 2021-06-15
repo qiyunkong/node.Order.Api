@@ -30,12 +30,12 @@ router.use('/menu',menus)
 router.use('/order',order)
 router.use('/users',users)
 router.use('/model',model)
+router.use('/mobile',mobile)
 router.use('/system',setting)
 router.use('/product',product)
 router.use('/account',accounts)
 router.use('/payment',payment)
 router.use('/category',category)
-router.use('/mobile',mobile)
 
 //导出模块
 module.exports = router;

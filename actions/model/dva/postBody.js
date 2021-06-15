@@ -15,27 +15,26 @@ module.exports = async cxt => {
   const {name,dva,nameDva} = body;
 
   //model 模型结构
-  const schemaDva = DvaModel(dva)
+  const _schemaDva = DvaModel(dva)
   //table 表格结构
   const columnsTable = DvaTable(dva)
   //from 表单结构
-  const columnsFrom =  DvaForm(dva)
+  const columnsForm =  DvaForm(dva)
 
   //声明机甲类型
   const modelDva = {
     name,
     nameDva,
-    schemaDva,
+    schemaDva:[_schemaDva],
     columnsTable,
-    columnsFrom,
+    columnsForm,
   }
-
   //保存机甲类型
   const httpData =  await addModel(modelDva,ModelDva)
   //通过机甲构建
-  const DvaSchema = new Schema(schemaDva)
+  const DvaSchema = new Schema(_schemaDva)
   //生成集合模型
-  const Test = await mongoose.model(name,DvaSchema);
+  const Test = await mongoose.model(name,DvaSchema)
   cxt.response.status = httpData.code
   cxt.body = httpData
 

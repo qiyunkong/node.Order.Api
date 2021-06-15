@@ -4,7 +4,7 @@ const Router                =     require('koa-router')
 const {postDvaAction}       =     require('../actions/model/dva')
 //引入机甲模型
 const ModelDva              =     require('../model/ModelDva')
-const HttpData             =     require('../config/httpConfig')
+const HttpData              =     require('../config/httpConfig')
 
 
 
@@ -19,34 +19,37 @@ const router = new Router()
 
 
 
-/** 模型数据 API */
+/** 模型数据 API 查询*/
 router.get('/:model',async (cxt)=>{
     //获取数据模型名称别名
     const model = cxt.params['model'];
     //验证模型名称是否正确
-    const ModelDvaList =  ModelDva.find({name:model})
+    const ModelDvaList = await ModelDva.where({name:model})
     //
-    if(ModelDvaList.leading == 0){
+    if(ModelDvaList.length == 0){
         cxt.body = new HttpData(401,"error","模型名称不对",ModelDvaList)
     }else{
         //查询
         const data =  await mongoose.models[model].find({})
-        cxt.body = {data:data}
+        const {columnsForm,columnsTable,schemaDva} = ModelDvaList[0]
+        cxt.body = {
+            columnsForm:columnsForm,
+            columnsTable:columnsTable,
+            data:data,
+        }
     }
 });
 
+
+
+/** 模型数据 API 添加 */
 router.post('/:model',async (cxt)=>{
     //添加数据
-    const model = cxt.params['model'];
+    const model = cxt.params['model']
     //获取POST参数
-    const body = cxt.request.body;
-    console.log(mongoose.models);
+    const body = cxt.request.body
     const data = await mongoose.models[model].create(body)
-    console.log(body)
     cxt.body = {data}
-
-
-
 
 })
 
@@ -75,18 +78,18 @@ router.put('/:model',async ()=>{
 //获取模型集合
 router.get('/',async  (cxt)=>{
 
-    const TestSchema = new Schema({
-        //分类名称
-        name:{
-            type:String,
-            required: true,
-        },
-    })
-
-    //建立测试集合类
-    const Test = await mongoose.model('Test',TestSchema);
-
-    cxt.body = {data:"创建成功"}
+    // const TestSchema = new Schema({
+    //     //分类名称
+    //     name:{
+    //         type:String,
+    //         required: true,
+    //     },
+    // })
+    //
+    // //建立测试集合类
+    // const Test = await mongoose.model('Test',TestSchema);
+    //
+    // cxt.body = {data:"创建成功"}
 
 })
 
@@ -103,6 +106,16 @@ router.delete('/',async  ()=>{
 
 })
 
+
+/** 模型机甲API */
+
+//获取模型表单
+router.get('/:model/form',async (cxt)=>{
+    //添加数据
+    const model = cxt.params['model'];
+    const result = ModelDva.where({name:model}).select("schemaDva")
+    cxt.body = result;
+})
 
 
 

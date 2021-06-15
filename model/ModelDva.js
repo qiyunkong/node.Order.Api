@@ -14,7 +14,7 @@ const ModelDvaSchema = new Schema({
   //JSON表头
   columnsTable:Array,
   //JSON表单
-  columnsFrom:Array,
+  columnsForm:Array,
   //是否有关联表
   keyDva:Array,
   //数据量

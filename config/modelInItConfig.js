@@ -145,8 +145,8 @@ const modelDavInIt = async ()=>{
   //初始化全部机甲
   for(let i = 0; i<data.length ; i++){
     const {name,schemaDva} = data[0]
-    //通过机甲构建
-    const DvaSchema = new Schema(schemaDva)
+    //通过机甲构建 Schema({...schemaDva})
+    const DvaSchema = new  Schema({...schemaDva[0]})
     await mongoose.model(name,DvaSchema);
   }
   console.log("modelDavInIt==》机甲类型初始化完成")
