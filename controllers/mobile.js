@@ -18,7 +18,7 @@ router.get('/product',async (cxt)=>{
   const categoryArr =  JSON.parse(categoryId);
   const id =  categoryArr[0];
   //分类数据
-  const categoryData = await Category.find({parentId:id})
+  const categoryData = await Category.where({status:true}).find({parentId:id})
   //商品数据
   const productData  = await Product.find({categoryId:{$in:categoryArr}})
   //遍历小程序数据格式
